@@ -1,0 +1,217 @@
+/*==============================================================*/
+/* DBMS name:      PostgreSQL 8                                 */
+/* Created on:     28/03/2012 15:57:47                          */
+/*==============================================================*/
+
+
+drop index CONTRAPARTECLIENTE_FK;
+
+drop index CLIENTE_PK;
+
+drop table cliente;
+
+drop index CONTRAPARTE_PK;
+
+drop table contraparte;
+
+drop index TIPODOCUMENTODOC_FK;
+
+drop index DOCUMENTO_PK;
+
+drop table documento;
+
+drop index ESTADO_PK;
+
+drop table estado;
+
+drop index DOCUMENTOPROPUESTA_FK;
+
+drop index PROPUESTACLIENTE_FK;
+
+drop index ESTADOPROPUESTA_FK;
+
+drop index PROPUESTA_PK;
+
+drop table propuesta;
+
+drop index TIPO_DOCUMENTO_PK;
+
+drop table tipo_documento;
+
+/*==============================================================*/
+/* Table: cliente                                               */
+/*==============================================================*/
+create table cliente (
+   cliente_id           SERIAL               not null,
+   contraparte_id       INT4                 null,
+   nombre               VARCHAR(75)          not null,
+   es_recurrente        BOOL                 not null,
+   constraint PK_CLIENTE primary key (cliente_id)
+);
+
+/*==============================================================*/
+/* Index: CLIENTE_PK                                            */
+/*==============================================================*/
+create unique index CLIENTE_PK on cliente (
+cliente_id
+);
+
+/*==============================================================*/
+/* Index: CONTRAPARTECLIENTE_FK                                 */
+/*==============================================================*/
+create  index CONTRAPARTECLIENTE_FK on cliente (
+contraparte_id
+);
+
+/*==============================================================*/
+/* Table: contraparte                                           */
+/*==============================================================*/
+create table contraparte (
+   contraparte_id       SERIAL               not null,
+   nombre               VARCHAR(75)          not null,
+   cargo                VARCHAR(75)          not null,
+   decide               BOOL                 not null,
+   constraint PK_CONTRAPARTE primary key (contraparte_id)
+);
+
+/*==============================================================*/
+/* Index: CONTRAPARTE_PK                                        */
+/*==============================================================*/
+create unique index CONTRAPARTE_PK on contraparte (
+contraparte_id
+);
+
+/*==============================================================*/
+/* Table: documento                                             */
+/*==============================================================*/
+create table documento (
+   documento_id         SERIAL               not null,
+   tipo_id              INT4                 null,
+   nombre               VARCHAR(75)          not null,
+   archivo              VARCHAR(100)         not null,
+   constraint PK_DOCUMENTO primary key (documento_id)
+);
+
+/*==============================================================*/
+/* Index: DOCUMENTO_PK                                          */
+/*==============================================================*/
+create unique index DOCUMENTO_PK on documento (
+documento_id
+);
+
+/*==============================================================*/
+/* Index: TIPODOCUMENTODOC_FK                                   */
+/*==============================================================*/
+create  index TIPODOCUMENTODOC_FK on documento (
+tipo_id
+);
+
+/*==============================================================*/
+/* Table: estado                                                */
+/*==============================================================*/
+create table estado (
+   estado_id            SERIAL               not null,
+   nombre               VARCHAR(75)          not null,
+   es_inicial           BOOL                 not null,
+   es_final             BOOL                 not null,
+   es_ganado            BOOL                 not null,
+   es_perdido           BOOL                 not null,
+   orden                INT4                 not null,
+   constraint PK_ESTADO primary key (estado_id)
+);
+
+/*==============================================================*/
+/* Index: ESTADO_PK                                             */
+/*==============================================================*/
+create unique index ESTADO_PK on estado (
+estado_id
+);
+
+/*==============================================================*/
+/* Table: propuesta                                             */
+/*==============================================================*/
+create table propuesta (
+   propuesta_id         SERIAL               not null,
+   estado_id            INT4                 null,
+   documento_id         INT4                 null,
+   cliente_id           INT4                 null,
+   nombre               VARCHAR(75)          not null,
+   fecha_ingreso        DATE                 not null,
+   fecha_entrega        DATE                 not null,
+   fecha_envio          DATE                 not null,
+   esfuerzo             INT4                 not null,
+   horas_ingenieria     INT4                 not null,
+   horas_diseno         INT4                 not null,
+   ejecutivo_id         INT4                 not null,
+   constraint PK_PROPUESTA primary key (propuesta_id)
+);
+
+/*==============================================================*/
+/* Index: PROPUESTA_PK                                          */
+/*==============================================================*/
+create unique index PROPUESTA_PK on propuesta (
+propuesta_id
+);
+
+/*==============================================================*/
+/* Index: ESTADOPROPUESTA_FK                                    */
+/*==============================================================*/
+create  index ESTADOPROPUESTA_FK on propuesta (
+estado_id
+);
+
+/*==============================================================*/
+/* Index: PROPUESTACLIENTE_FK                                   */
+/*==============================================================*/
+create  index PROPUESTACLIENTE_FK on propuesta (
+cliente_id
+);
+
+/*==============================================================*/
+/* Index: DOCUMENTOPROPUESTA_FK                                 */
+/*==============================================================*/
+create  index DOCUMENTOPROPUESTA_FK on propuesta (
+documento_id
+);
+
+/*==============================================================*/
+/* Table: tipo_documento                                        */
+/*==============================================================*/
+create table tipo_documento (
+   tipo_id              SERIAL               not null,
+   nombre               VARCHAR(75)          not null,
+   constraint PK_TIPO_DOCUMENTO primary key (tipo_id)
+);
+
+/*==============================================================*/
+/* Index: TIPO_DOCUMENTO_PK                                     */
+/*==============================================================*/
+create unique index TIPO_DOCUMENTO_PK on tipo_documento (
+tipo_id
+);
+
+alter table cliente
+   add constraint FK_CLIENTE_CONTRAPAR_CONTRAPA foreign key (contraparte_id)
+      references contraparte (contraparte_id)
+      on delete restrict on update restrict;
+
+alter table documento
+   add constraint FK_DOCUMENT_TIPODOCUM_TIPO_DOC foreign key (tipo_id)
+      references tipo_documento (tipo_id)
+      on delete restrict on update restrict;
+
+alter table propuesta
+   add constraint FK_PROPUEST_DOCUMENTO_DOCUMENT foreign key (documento_id)
+      references documento (documento_id)
+      on delete restrict on update restrict;
+
+alter table propuesta
+   add constraint FK_PROPUEST_ESTADOPRO_ESTADO foreign key (estado_id)
+      references estado (estado_id)
+      on delete restrict on update restrict;
+
+alter table propuesta
+   add constraint FK_PROPUEST_PROPUESTA_CLIENTE foreign key (cliente_id)
+      references cliente (cliente_id)
+      on delete restrict on update restrict;
+

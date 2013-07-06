@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "EFH";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper page-header">
+            <hgroup class="title">
+                <h1>@ViewBag.Title <small>Gestión de Proyectos</small></h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                <div class="row-fluid">
+                    <div class="span12">
+                        @*<h2>EFH es Gratis!
+                        </h2>
+                        <br>*@
+                        <p>
+                            EFH está basado en la idea de hacer que la gestión de proyectos resulte más fácil
+                    y eficiente, e incluso divertido. Después de todo, EFH tiene:
+                        </p>
+                        <p>
+                            <ul>
+                                <li>Kanban de Proyectos.</li>
+                                <li>Eficiencia de Tareas y Proyectos.</li>
+                                <li>Capacity de Proyectos.</li>
+                                <li>Soporta browsers como Chrome, Safari, Internet Explorer, and Firefox.</li>
+                            </ul>
+                            <p />
+                    </div>
+                    <div class="span12">
+                        <h3>¿Primera Vez?</h3>
+                        <br>
+                        <p>
+                            ¿Es primera vez que utilizas EFH?
+                        </p>
+                        <p>
+                            @*<a href="javascript:void(0);" class="btn info crearCuenta">Crear Cuenta</a>*@
+                            @Html.ActionLink("Crear Cuenta", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink2", @class = "btn info crearCuenta" })
+                        </p>
+                    </div>
+                </div>
+            </p>
+        </div>
+    </section>
+}

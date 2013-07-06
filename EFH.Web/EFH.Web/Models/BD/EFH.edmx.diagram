@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2841192c07de4ffbab31303f89c80d04" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="EFHModel.tb_empresa" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="EFHModel.tb_usuario" Width="1.5" PointX="3" PointY="5.5" />
+        <AssociationConnector Association="EFHModel.R_4" />
+        <EntityTypeShape EntityType="EFHModel.tb_evento" Width="1.5" PointX="7.5" PointY="17" />
+        <EntityTypeShape EntityType="EFHModel.tb_agenda_telefonica" Width="1.5" PointX="6" PointY="2.375" />
+        <EntityTypeShape EntityType="EFHModel.tb_cliente_empresa" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_detalle_agenda_telefonica" Width="1.5" PointX="8.25" PointY="9.25" />
+        <EntityTypeShape EntityType="EFHModel.tb_detalle_rol" Width="1.5" PointX="5.25" PointY="9.25" />
+        <EntityTypeShape EntityType="EFHModel.tb_fases_proyecto" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="EFHModel.tb_grupo" Width="1.5" PointX="3" PointY="15.875" />
+        <EntityTypeShape EntityType="EFHModel.tb_grupo_usuario" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_regla" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_roles" Width="1.5" PointX="3" PointY="13" />
+        <EntityTypeShape EntityType="EFHModel.tb_tipo_numero" Width="1.5" PointX="3.75" PointY="2.625" />
+        <EntityTypeShape EntityType="EFHModel.tb_tipo_regla" Width="1.5" PointX="7.75" PointY="5.75" />
+        <AssociationConnector Association="EFHModel.R_2" />
+        <AssociationConnector Association="EFHModel.R_8" />
+        <AssociationConnector Association="EFHModel.R_1" />
+        <AssociationConnector Association="EFHModel.R_3" />
+        <AssociationConnector Association="EFHModel.R_6" />
+        <AssociationConnector Association="EFHModel.R_7" />
+        <AssociationConnector Association="EFHModel.R_18" />
+        <AssociationConnector Association="EFHModel.R_29" />
+        <AssociationConnector Association="EFHModel.R_5" />
+        <AssociationConnector Association="EFHModel.R_20" />
+        <AssociationConnector Association="EFHModel.R_19" />
+        <EntityTypeShape EntityType="EFHModel.tb_estado_proyecto_kanban" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="EFHModel.tb_proyecto" Width="1.5" PointX="5.25" PointY="15.875" />
+        <AssociationConnector Association="EFHModel.R_23" />
+        <AssociationConnector Association="EFHModel.R_9" />
+        <AssociationConnector Association="EFHModel.R_24" />
+        <AssociationConnector Association="EFHModel.R_17" />
+        <EntityTypeShape EntityType="EFHModel.tb_criterios_aceptacion" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_historia_usuario" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_plantilla_estados_proyectos_kanban" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_prioridad" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_riesgo" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EFHModel.tb_tipo_grupo" Width="1.5" PointX="10.75" PointY="11.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

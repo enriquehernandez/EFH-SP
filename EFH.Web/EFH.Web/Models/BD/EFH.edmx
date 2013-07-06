@@ -1,0 +1,1342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EFHModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EFHModelStoreContainer">
+          <EntitySet Name="tb_agenda_telefonica" EntityType="EFHModel.Store.tb_agenda_telefonica" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_cliente_empresa" EntityType="EFHModel.Store.tb_cliente_empresa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_criterios_aceptacion" EntityType="EFHModel.Store.tb_criterios_aceptacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_detalle_agenda_telefonica" EntityType="EFHModel.Store.tb_detalle_agenda_telefonica" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_detalle_rol" EntityType="EFHModel.Store.tb_detalle_rol" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_empresa" EntityType="EFHModel.Store.tb_empresa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_estado_proyecto_kanban" EntityType="EFHModel.Store.tb_estado_proyecto_kanban" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_evento" EntityType="EFHModel.Store.tb_evento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_fases_proyecto" EntityType="EFHModel.Store.tb_fases_proyecto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_grupo" EntityType="EFHModel.Store.tb_grupo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_grupo_usuario" EntityType="EFHModel.Store.tb_grupo_usuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_historia_usuario" EntityType="EFHModel.Store.tb_historia_usuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_plantilla_estados_proyectos_kanban" EntityType="EFHModel.Store.tb_plantilla_estados_proyectos_kanban" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_prioridad" EntityType="EFHModel.Store.tb_prioridad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_proyecto" EntityType="EFHModel.Store.tb_proyecto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_regla" EntityType="EFHModel.Store.tb_regla" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_riesgo" EntityType="EFHModel.Store.tb_riesgo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_roles" EntityType="EFHModel.Store.tb_roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_tipo_grupo" EntityType="EFHModel.Store.tb_tipo_grupo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_tipo_numero" EntityType="EFHModel.Store.tb_tipo_numero" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_tipo_regla" EntityType="EFHModel.Store.tb_tipo_regla" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_usuario" EntityType="EFHModel.Store.tb_usuario" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="R_1" Association="EFHModel.Store.R_1">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="EFHModel.Store.R_17">
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+            <End Role="tb_evento" EntitySet="tb_evento" />
+          </AssociationSet>
+          <AssociationSet Name="R_18" Association="EFHModel.Store.R_18">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_grupo" EntitySet="tb_grupo" />
+          </AssociationSet>
+          <AssociationSet Name="R_19" Association="EFHModel.Store.R_19">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_grupo_usuario" EntitySet="tb_grupo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="R_2" Association="EFHModel.Store.R_2">
+            <End Role="tb_agenda_telefonica" EntitySet="tb_agenda_telefonica" />
+            <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_20" Association="EFHModel.Store.R_20">
+            <End Role="tb_grupo" EntitySet="tb_grupo" />
+            <End Role="tb_grupo_usuario" EntitySet="tb_grupo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="R_23" Association="EFHModel.Store.R_23">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_estado_proyecto_kanban" EntitySet="tb_estado_proyecto_kanban" />
+          </AssociationSet>
+          <AssociationSet Name="R_24" Association="EFHModel.Store.R_24">
+            <End Role="tb_estado_proyecto_kanban" EntitySet="tb_estado_proyecto_kanban" />
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="R_29" Association="EFHModel.Store.R_29">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_fases_proyecto" EntitySet="tb_fases_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="EFHModel.Store.R_3">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_4" Association="EFHModel.Store.R_4">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="R_5" Association="EFHModel.Store.R_5">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_roles" EntitySet="tb_roles" />
+          </AssociationSet>
+          <AssociationSet Name="R_6" Association="EFHModel.Store.R_6">
+            <End Role="tb_roles" EntitySet="tb_roles" />
+            <End Role="tb_detalle_rol" EntitySet="tb_detalle_rol" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="EFHModel.Store.R_7">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_detalle_rol" EntitySet="tb_detalle_rol" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="EFHModel.Store.R_8">
+            <End Role="tb_tipo_numero" EntitySet="tb_tipo_numero" />
+            <End Role="tb_agenda_telefonica" EntitySet="tb_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="EFHModel.Store.R_9">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tb_agenda_telefonica">
+          <Key>
+            <PropertyRef Name="id_agenda_telefonica" />
+          </Key>
+          <Property Name="id_agenda_telefonica" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_agenda" Type="varchar" MaxLength="50" />
+          <Property Name="id_tipo_numero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_cliente_empresa">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="nombre_cliente" Type="varchar" MaxLength="100" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="nemo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tb_criterios_aceptacion">
+          <Key>
+            <PropertyRef Name="id_criterio_aceptacion" />
+          </Key>
+          <Property Name="id_criterio_aceptacion" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="id_proyecto" Type="bigint" Nullable="false" />
+          <Property Name="id_historia" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="150" />
+          <Property Name="descripcion" Type="varchar(max)" />
+          <Property Name="usuario" Type="bigint" />
+          <Property Name="fecha_creacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_detalle_agenda_telefonica">
+          <Key>
+            <PropertyRef Name="id_detalle_agenda" />
+          </Key>
+          <Property Name="id_detalle_agenda" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="bigint" />
+          <Property Name="id_agenda_telefonica" Type="bigint" Nullable="false" />
+          <Property Name="id_usuario" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tb_detalle_rol">
+          <Key>
+            <PropertyRef Name="id_detalle_rol" />
+          </Key>
+          <Property Name="id_detalle_rol" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_rol" Type="bigint" Nullable="false" />
+          <Property Name="id_usuario" Type="bigint" Nullable="false" />
+          <Property Name="id_empresa" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tb_empresa">
+          <Key>
+            <PropertyRef Name="id_empresa" />
+          </Key>
+          <Property Name="id_empresa" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_empresa" Type="varchar" MaxLength="200" />
+          <Property Name="url_empresa" Type="varchar" MaxLength="300" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="usuario_creador" Type="bigint" />
+          <Property Name="iniciada" Type="bit" />
+          <Property Name="inactivo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_estado_proyecto_kanban">
+          <Key>
+            <PropertyRef Name="id_estado_proyecto_kanban" />
+          </Key>
+          <Property Name="id_estado_proyecto_kanban" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_kanban" Type="varchar" MaxLength="100" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="orden" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_evento" Type="datetime" />
+          <Property Name="nombre_evento" Type="varchar" MaxLength="100" />
+          <Property Name="detalle_evento" Type="varchar(max)" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="usuario_creador" Type="bigint" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="id_proyecto" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_fases_proyecto">
+          <Key>
+            <PropertyRef Name="id_fase_proyecto" />
+          </Key>
+          <Property Name="id_fase_proyecto" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="nombre_fase" Type="varchar" MaxLength="100" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="orden" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_grupo">
+          <Key>
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_grupo" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_grupo" Type="varchar" MaxLength="100" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="id_tipo_grupo" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tb_grupo_usuario">
+          <Key>
+            <PropertyRef Name="id_grupo_usuario" />
+          </Key>
+          <Property Name="id_grupo_usuario" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="bigint" Nullable="false" />
+          <Property Name="id_grupo" Type="bigint" Nullable="false" />
+          <Property Name="id_empresa" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tb_historia_usuario">
+          <Key>
+            <PropertyRef Name="id_historia" />
+          </Key>
+          <Property Name="id_historia" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="id_proyecto" Type="bigint" Nullable="false" />
+          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="id_prioridad" Type="int" Nullable="false" />
+          <Property Name="id_riesgo" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="150" />
+          <Property Name="descripcion" Type="varchar(max)" />
+          <Property Name="usuario" Type="bigint" />
+          <Property Name="fecha_creacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_plantilla_estados_proyectos_kanban">
+          <Key>
+            <PropertyRef Name="id_plantilla_proyectos_kanban" />
+          </Key>
+          <Property Name="id_plantilla_proyectos_kanban" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_kanban" Type="varchar" MaxLength="100" />
+          <Property Name="orden" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_prioridad">
+          <Key>
+            <PropertyRef Name="id_prioridad" />
+          </Key>
+          <Property Name="id_prioridad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="prioridad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_proyecto">
+          <Key>
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_proyecto" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="nombre_proyecto" Type="varchar" MaxLength="100" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="fecha_inicio_estimado" Type="datetime" />
+          <Property Name="fecha_fin_estimado" Type="datetime" />
+          <Property Name="fecha_inicio_real" Type="datetime" />
+          <Property Name="fecha_fin_real" Type="datetime" />
+          <Property Name="horas_estimadas" Type="float" />
+          <Property Name="id_responsable_proyecto" Type="bigint" />
+          <Property Name="id_responsable_proyecto_cliente" Type="bigint" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="id_usuario_creador" Type="bigint" />
+          <Property Name="id_cliente" Type="bigint" Nullable="false" />
+          <Property Name="id_estado_proyecto_kanban" Type="bigint" Nullable="false" />
+          <Property Name="es_tutorial" Type="bit" />
+          <Property Name="descripcion_proyecto" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_regla">
+          <Key>
+            <PropertyRef Name="id_regla" />
+          </Key>
+          <Property Name="id_regla" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="valor_regla" Type="float" />
+          <Property Name="id_tipo_regla" Type="int" />
+          <Property Name="id_empresa" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tb_riesgo">
+          <Key>
+            <PropertyRef Name="id_riesgo" />
+          </Key>
+          <Property Name="id_riesgo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="riesgo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_roles">
+          <Key>
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Name="id_rol" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_rol" Type="varchar" MaxLength="50" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="inactivo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_tipo_grupo">
+          <Key>
+            <PropertyRef Name="id_tipo_grupo" />
+          </Key>
+          <Property Name="id_tipo_grupo" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_grupo" Type="varchar" MaxLength="50" />
+          <Property Name="desc_tipo_grupo" Type="varchar" MaxLength="300" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_tipo_numero">
+          <Key>
+            <PropertyRef Name="id_tipo_numero" />
+          </Key>
+          <Property Name="id_tipo_numero" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_numero" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tb_tipo_regla">
+          <Key>
+            <PropertyRef Name="id_tipo_regla" />
+          </Key>
+          <Property Name="id_tipo_regla" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_regla" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="email_usuario" Type="varchar" MaxLength="50" />
+          <Property Name="clave" Type="varchar" MaxLength="50" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="100" />
+          <Property Name="ap_paterno_usuario" Type="varchar" MaxLength="50" />
+          <Property Name="ap_materno_usuario" Type="varchar" MaxLength="50" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="por_confirmar" Type="bit" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" />
+        </EntityType>
+        <Association Name="R_1">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="0..1" />
+          <End Role="tb_detalle_agenda_telefonica" Type="EFHModel.Store.tb_detalle_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_detalle_agenda_telefonica">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="tb_proyecto" Type="EFHModel.Store.tb_proyecto" Multiplicity="1" />
+          <End Role="tb_evento" Type="EFHModel.Store.tb_evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_proyecto">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="tb_evento">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_18">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_grupo" Type="EFHModel.Store.tb_grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_grupo">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_19">
+          <End Role="tb_usuario" Type="EFHModel.Store.tb_usuario" Multiplicity="1" />
+          <End Role="tb_grupo_usuario" Type="EFHModel.Store.tb_grupo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tb_grupo_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_2">
+          <End Role="tb_agenda_telefonica" Type="EFHModel.Store.tb_agenda_telefonica" Multiplicity="1" />
+          <End Role="tb_detalle_agenda_telefonica" Type="EFHModel.Store.tb_detalle_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_agenda_telefonica">
+              <PropertyRef Name="id_agenda_telefonica" />
+            </Principal>
+            <Dependent Role="tb_detalle_agenda_telefonica">
+              <PropertyRef Name="id_agenda_telefonica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_20">
+          <End Role="tb_grupo" Type="EFHModel.Store.tb_grupo" Multiplicity="1" />
+          <End Role="tb_grupo_usuario" Type="EFHModel.Store.tb_grupo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_grupo">
+              <PropertyRef Name="id_grupo" />
+            </Principal>
+            <Dependent Role="tb_grupo_usuario">
+              <PropertyRef Name="id_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_23">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_estado_proyecto_kanban" Type="EFHModel.Store.tb_estado_proyecto_kanban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_estado_proyecto_kanban">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_24">
+          <End Role="tb_estado_proyecto_kanban" Type="EFHModel.Store.tb_estado_proyecto_kanban" Multiplicity="1" />
+          <End Role="tb_proyecto" Type="EFHModel.Store.tb_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_estado_proyecto_kanban">
+              <PropertyRef Name="id_estado_proyecto_kanban" />
+            </Principal>
+            <Dependent Role="tb_proyecto">
+              <PropertyRef Name="id_estado_proyecto_kanban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_29">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_fases_proyecto" Type="EFHModel.Store.tb_fases_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_fases_proyecto">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="tb_usuario" Type="EFHModel.Store.tb_usuario" Multiplicity="0..1" />
+          <End Role="tb_detalle_agenda_telefonica" Type="EFHModel.Store.tb_detalle_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tb_detalle_agenda_telefonica">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_4">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_usuario" Type="EFHModel.Store.tb_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_usuario">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_5">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_roles" Type="EFHModel.Store.tb_roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_roles">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_6">
+          <End Role="tb_roles" Type="EFHModel.Store.tb_roles" Multiplicity="1" />
+          <End Role="tb_detalle_rol" Type="EFHModel.Store.tb_detalle_rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_roles">
+              <PropertyRef Name="id_rol" />
+            </Principal>
+            <Dependent Role="tb_detalle_rol">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="tb_usuario" Type="EFHModel.Store.tb_usuario" Multiplicity="1" />
+          <End Role="tb_detalle_rol" Type="EFHModel.Store.tb_detalle_rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tb_detalle_rol">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="tb_tipo_numero" Type="EFHModel.Store.tb_tipo_numero" Multiplicity="1" />
+          <End Role="tb_agenda_telefonica" Type="EFHModel.Store.tb_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_tipo_numero">
+              <PropertyRef Name="id_tipo_numero" />
+            </Principal>
+            <Dependent Role="tb_agenda_telefonica">
+              <PropertyRef Name="id_tipo_numero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_proyecto" Type="EFHModel.Store.tb_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_proyecto">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="efh_sp_iniciar_empresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEmpresa" Type="bigint" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFHModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EFHEntities" p1:LazyLoadingEnabled="true">
+          <FunctionImport Name="efh_sp_iniciar_empresa">
+          <Parameter Name="idEmpresa" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="tb_empresa" EntityType="EFHModel.tb_empresa" />
+          <EntitySet Name="tb_usuario" EntityType="EFHModel.tb_usuario" />
+          <AssociationSet Name="R_4" Association="EFHModel.R_4">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+          </AssociationSet>
+          <EntitySet Name="tb_evento" EntityType="EFHModel.tb_evento" />
+          <EntitySet Name="tb_agenda_telefonica" EntityType="EFHModel.tb_agenda_telefonica" />
+          <EntitySet Name="tb_cliente_empresa" EntityType="EFHModel.tb_cliente_empresa" />
+          <EntitySet Name="tb_detalle_agenda_telefonica" EntityType="EFHModel.tb_detalle_agenda_telefonica" />
+          <EntitySet Name="tb_detalle_rol" EntityType="EFHModel.tb_detalle_rol" />
+          <EntitySet Name="tb_fases_proyecto" EntityType="EFHModel.tb_fases_proyecto" />
+          <EntitySet Name="tb_grupo" EntityType="EFHModel.tb_grupo" />
+          <EntitySet Name="tb_grupo_usuario" EntityType="EFHModel.tb_grupo_usuario" />
+          <EntitySet Name="tb_regla" EntityType="EFHModel.tb_regla" />
+          <EntitySet Name="tb_roles" EntityType="EFHModel.tb_roles" />
+          <EntitySet Name="tb_tipo_numero" EntityType="EFHModel.tb_tipo_numero" />
+          <EntitySet Name="tb_tipo_regla" EntityType="EFHModel.tb_tipo_regla" />
+          <AssociationSet Name="R_2" Association="EFHModel.R_2">
+            <End Role="tb_agenda_telefonica" EntitySet="tb_agenda_telefonica" />
+            <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="EFHModel.R_8">
+            <End Role="tb_tipo_numero" EntitySet="tb_tipo_numero" />
+            <End Role="tb_agenda_telefonica" EntitySet="tb_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_1" Association="EFHModel.R_1">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="EFHModel.R_3">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_6" Association="EFHModel.R_6">
+            <End Role="tb_roles" EntitySet="tb_roles" />
+            <End Role="tb_detalle_rol" EntitySet="tb_detalle_rol" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="EFHModel.R_7">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_detalle_rol" EntitySet="tb_detalle_rol" />
+          </AssociationSet>
+          <AssociationSet Name="R_18" Association="EFHModel.R_18">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_grupo" EntitySet="tb_grupo" />
+          </AssociationSet>
+          <AssociationSet Name="R_29" Association="EFHModel.R_29">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_fases_proyecto" EntitySet="tb_fases_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="R_5" Association="EFHModel.R_5">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_roles" EntitySet="tb_roles" />
+          </AssociationSet>
+          <AssociationSet Name="R_20" Association="EFHModel.R_20">
+            <End Role="tb_grupo" EntitySet="tb_grupo" />
+            <End Role="tb_grupo_usuario" EntitySet="tb_grupo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="R_19" Association="EFHModel.R_19">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_grupo_usuario" EntitySet="tb_grupo_usuario" />
+          </AssociationSet>
+          <EntitySet Name="tb_estado_proyecto_kanban" EntityType="EFHModel.tb_estado_proyecto_kanban" />
+          <EntitySet Name="tb_proyecto" EntityType="EFHModel.tb_proyecto" />
+          <AssociationSet Name="R_23" Association="EFHModel.R_23">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_estado_proyecto_kanban" EntitySet="tb_estado_proyecto_kanban" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="EFHModel.R_9">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="R_24" Association="EFHModel.R_24">
+            <End Role="tb_estado_proyecto_kanban" EntitySet="tb_estado_proyecto_kanban" />
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="EFHModel.R_17">
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+            <End Role="tb_evento" EntitySet="tb_evento" />
+          </AssociationSet>
+          <EntitySet Name="tb_criterios_aceptacion" EntityType="EFHModel.tb_criterios_aceptacion" />
+          <EntitySet Name="tb_historia_usuario" EntityType="EFHModel.tb_historia_usuario" />
+          <EntitySet Name="tb_plantilla_estados_proyectos_kanban" EntityType="EFHModel.tb_plantilla_estados_proyectos_kanban" />
+          <EntitySet Name="tb_prioridad" EntityType="EFHModel.tb_prioridad" />
+          <EntitySet Name="tb_riesgo" EntityType="EFHModel.tb_riesgo" />
+          <EntitySet Name="tb_tipo_grupo" EntityType="EFHModel.tb_tipo_grupo" />
+          </EntityContainer>
+        <EntityType Name="tb_empresa">
+          <Key>
+            <PropertyRef Name="id_empresa" />
+          </Key>
+          <Property Type="Int64" Name="id_empresa" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_empresa" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="url_empresa" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <Property Type="Int64" Name="usuario_creador" />
+          <Property Type="Boolean" Name="iniciada" />
+          <Property Type="Boolean" Name="inactivo" />
+          <NavigationProperty Name="tb_usuario" Relationship="EFHModel.R_4" FromRole="tb_empresa" ToRole="tb_usuario" />
+          <NavigationProperty Name="tb_detalle_agenda_telefonica" Relationship="EFHModel.R_1" FromRole="tb_empresa" ToRole="tb_detalle_agenda_telefonica" />
+          <NavigationProperty Name="tb_grupo" Relationship="EFHModel.R_18" FromRole="tb_empresa" ToRole="tb_grupo" />
+          <NavigationProperty Name="tb_fases_proyecto" Relationship="EFHModel.R_29" FromRole="tb_empresa" ToRole="tb_fases_proyecto" />
+          <NavigationProperty Name="tb_roles" Relationship="EFHModel.R_5" FromRole="tb_empresa" ToRole="tb_roles" />
+          <NavigationProperty Name="tb_estado_proyecto_kanban" Relationship="EFHModel.R_23" FromRole="tb_empresa" ToRole="tb_estado_proyecto_kanban" />
+          <NavigationProperty Name="tb_proyecto" Relationship="EFHModel.R_9" FromRole="tb_empresa" ToRole="tb_proyecto" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Type="Int64" Name="id_usuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="email_usuario" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="clave" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nombre_usuario" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ap_paterno_usuario" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ap_materno_usuario" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="Boolean" Name="por_confirmar" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_4" FromRole="tb_usuario" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_detalle_agenda_telefonica" Relationship="EFHModel.R_3" FromRole="tb_usuario" ToRole="tb_detalle_agenda_telefonica" />
+          <NavigationProperty Name="tb_detalle_rol" Relationship="EFHModel.R_7" FromRole="tb_usuario" ToRole="tb_detalle_rol" />
+          <NavigationProperty Name="tb_grupo_usuario" Relationship="EFHModel.R_19" FromRole="tb_usuario" ToRole="tb_grupo_usuario" />
+        </EntityType>
+        <Association Name="R_4">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_usuario" Role="tb_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_usuario">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tb_evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Type="Int64" Name="id_evento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="fecha_evento" Precision="3" />
+          <Property Type="String" Name="nombre_evento" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="detalle_evento" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="Int64" Name="usuario_creador" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
+          <NavigationProperty Name="tb_proyecto" Relationship="EFHModel.R_17" FromRole="tb_evento" ToRole="tb_proyecto" />
+        </EntityType>
+        <EntityType Name="tb_agenda_telefonica">
+          <Key>
+            <PropertyRef Name="id_agenda_telefonica" />
+          </Key>
+          <Property Type="Int64" Name="id_agenda_telefonica" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="numero_agenda" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_tipo_numero" Nullable="false" />
+          <NavigationProperty Name="tb_detalle_agenda_telefonica" Relationship="EFHModel.R_2" FromRole="tb_agenda_telefonica" ToRole="tb_detalle_agenda_telefonica" />
+          <NavigationProperty Name="tb_tipo_numero" Relationship="EFHModel.R_8" FromRole="tb_agenda_telefonica" ToRole="tb_tipo_numero" />
+        </EntityType>
+        <EntityType Name="tb_cliente_empresa">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Type="Int64" Name="id_cliente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="String" Name="nombre_cliente" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="String" Name="nemo" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_detalle_agenda_telefonica">
+          <Key>
+            <PropertyRef Name="id_detalle_agenda" />
+          </Key>
+          <Property Type="Int64" Name="id_detalle_agenda" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" />
+          <Property Type="Int64" Name="id_agenda_telefonica" Nullable="false" />
+          <Property Type="Int64" Name="id_usuario" />
+          <NavigationProperty Name="tb_agenda_telefonica" Relationship="EFHModel.R_2" FromRole="tb_detalle_agenda_telefonica" ToRole="tb_agenda_telefonica" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_1" FromRole="tb_detalle_agenda_telefonica" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_usuario" Relationship="EFHModel.R_3" FromRole="tb_detalle_agenda_telefonica" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="tb_detalle_rol">
+          <Key>
+            <PropertyRef Name="id_detalle_rol" />
+          </Key>
+          <Property Type="Int64" Name="id_detalle_rol" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_rol" Nullable="false" />
+          <Property Type="Int64" Name="id_usuario" Nullable="false" />
+          <Property Type="Int64" Name="id_empresa" />
+          <NavigationProperty Name="tb_roles" Relationship="EFHModel.R_6" FromRole="tb_detalle_rol" ToRole="tb_roles" />
+          <NavigationProperty Name="tb_usuario" Relationship="EFHModel.R_7" FromRole="tb_detalle_rol" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="tb_fases_proyecto">
+          <Key>
+            <PropertyRef Name="id_fase_proyecto" />
+          </Key>
+          <Property Type="Int64" Name="id_fase_proyecto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="String" Name="nombre_fase" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="Int32" Name="orden" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_29" FromRole="tb_fases_proyecto" ToRole="tb_empresa" />
+        </EntityType>
+        <EntityType Name="tb_grupo">
+          <Key>
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Type="Int64" Name="id_grupo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_grupo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int64" Name="id_tipo_grupo" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_18" FromRole="tb_grupo" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_grupo_usuario" Relationship="EFHModel.R_20" FromRole="tb_grupo" ToRole="tb_grupo_usuario" />
+        </EntityType>
+        <EntityType Name="tb_grupo_usuario">
+          <Key>
+            <PropertyRef Name="id_grupo_usuario" />
+          </Key>
+          <Property Type="Int64" Name="id_grupo_usuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_usuario" Nullable="false" />
+          <Property Type="Int64" Name="id_grupo" Nullable="false" />
+          <Property Type="Int64" Name="id_empresa" />
+          <NavigationProperty Name="tb_grupo" Relationship="EFHModel.R_20" FromRole="tb_grupo_usuario" ToRole="tb_grupo" />
+          <NavigationProperty Name="tb_usuario" Relationship="EFHModel.R_19" FromRole="tb_grupo_usuario" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="tb_regla">
+          <Key>
+            <PropertyRef Name="id_regla" />
+          </Key>
+          <Property Type="Int64" Name="id_regla" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="valor_regla" />
+          <Property Type="Int32" Name="id_tipo_regla" />
+          <Property Type="Int64" Name="id_empresa" />
+        </EntityType>
+        <EntityType Name="tb_roles">
+          <Key>
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Type="Int64" Name="id_rol" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_rol" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <NavigationProperty Name="tb_detalle_rol" Relationship="EFHModel.R_6" FromRole="tb_roles" ToRole="tb_detalle_rol" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_5" FromRole="tb_roles" ToRole="tb_empresa" />
+          <Property Type="Boolean" Name="inactivo" />
+        </EntityType>
+        <EntityType Name="tb_tipo_numero">
+          <Key>
+            <PropertyRef Name="id_tipo_numero" />
+          </Key>
+          <Property Type="Int32" Name="id_tipo_numero" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="tipo_numero" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_agenda_telefonica" Relationship="EFHModel.R_8" FromRole="tb_tipo_numero" ToRole="tb_agenda_telefonica" />
+        </EntityType>
+        <EntityType Name="tb_tipo_regla">
+          <Key>
+            <PropertyRef Name="id_tipo_regla" />
+          </Key>
+          <Property Type="Int32" Name="id_tipo_regla" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="tipo_regla" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="R_2">
+          <End Type="EFHModel.tb_agenda_telefonica" Role="tb_agenda_telefonica" Multiplicity="1" />
+          <End Type="EFHModel.tb_detalle_agenda_telefonica" Role="tb_detalle_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_agenda_telefonica">
+              <PropertyRef Name="id_agenda_telefonica" />
+            </Principal>
+            <Dependent Role="tb_detalle_agenda_telefonica">
+              <PropertyRef Name="id_agenda_telefonica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Type="EFHModel.tb_tipo_numero" Role="tb_tipo_numero" Multiplicity="1" />
+          <End Type="EFHModel.tb_agenda_telefonica" Role="tb_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_tipo_numero">
+              <PropertyRef Name="id_tipo_numero" />
+            </Principal>
+            <Dependent Role="tb_agenda_telefonica">
+              <PropertyRef Name="id_tipo_numero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_1">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="0..1" />
+          <End Type="EFHModel.tb_detalle_agenda_telefonica" Role="tb_detalle_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_detalle_agenda_telefonica">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Type="EFHModel.tb_usuario" Role="tb_usuario" Multiplicity="0..1" />
+          <End Type="EFHModel.tb_detalle_agenda_telefonica" Role="tb_detalle_agenda_telefonica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tb_detalle_agenda_telefonica">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_6">
+          <End Type="EFHModel.tb_roles" Role="tb_roles" Multiplicity="1" />
+          <End Type="EFHModel.tb_detalle_rol" Role="tb_detalle_rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_roles">
+              <PropertyRef Name="id_rol" />
+            </Principal>
+            <Dependent Role="tb_detalle_rol">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Type="EFHModel.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="EFHModel.tb_detalle_rol" Role="tb_detalle_rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tb_detalle_rol">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_18">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_grupo" Role="tb_grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_grupo">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_29">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_fases_proyecto" Role="tb_fases_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_fases_proyecto">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_5">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_roles" Role="tb_roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_roles">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_20">
+          <End Type="EFHModel.tb_grupo" Role="tb_grupo" Multiplicity="1" />
+          <End Type="EFHModel.tb_grupo_usuario" Role="tb_grupo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_grupo">
+              <PropertyRef Name="id_grupo" />
+            </Principal>
+            <Dependent Role="tb_grupo_usuario">
+              <PropertyRef Name="id_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_19">
+          <End Type="EFHModel.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="EFHModel.tb_grupo_usuario" Role="tb_grupo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tb_grupo_usuario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tb_estado_proyecto_kanban">
+          <Key>
+            <PropertyRef Name="id_estado_proyecto_kanban" />
+          </Key>
+          <Property Type="Int64" Name="id_estado_proyecto_kanban" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_kanban" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int32" Name="orden" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_23" FromRole="tb_estado_proyecto_kanban" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_proyecto" Relationship="EFHModel.R_24" FromRole="tb_estado_proyecto_kanban" ToRole="tb_proyecto" />
+        </EntityType>
+        <EntityType Name="tb_proyecto">
+          <Key>
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="String" Name="nombre_proyecto" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <Property Type="DateTime" Name="fecha_inicio_estimado" Precision="3" />
+          <Property Type="DateTime" Name="fecha_fin_estimado" Precision="3" />
+          <Property Type="DateTime" Name="fecha_inicio_real" Precision="3" />
+          <Property Type="DateTime" Name="fecha_fin_real" Precision="3" />
+          <Property Type="Double" Name="horas_estimadas" />
+          <Property Type="Int64" Name="id_responsable_proyecto" />
+          <Property Type="Int64" Name="id_responsable_proyecto_cliente" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="Int64" Name="id_usuario_creador" />
+          <Property Type="Int64" Name="id_cliente" Nullable="false" />
+          <Property Type="Int64" Name="id_estado_proyecto_kanban" Nullable="false" />
+          <Property Type="Boolean" Name="es_tutorial" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_9" FromRole="tb_proyecto" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_estado_proyecto_kanban" Relationship="EFHModel.R_24" FromRole="tb_proyecto" ToRole="tb_estado_proyecto_kanban" />
+          <NavigationProperty Name="tb_evento" Relationship="EFHModel.R_17" FromRole="tb_proyecto" ToRole="tb_evento" />
+          <Property Type="String" Name="descripcion_proyecto" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="R_23">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_estado_proyecto_kanban" Role="tb_estado_proyecto_kanban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_estado_proyecto_kanban">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_proyecto" Role="tb_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_proyecto">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_24">
+          <End Type="EFHModel.tb_estado_proyecto_kanban" Role="tb_estado_proyecto_kanban" Multiplicity="1" />
+          <End Type="EFHModel.tb_proyecto" Role="tb_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_estado_proyecto_kanban">
+              <PropertyRef Name="id_estado_proyecto_kanban" />
+            </Principal>
+            <Dependent Role="tb_proyecto">
+              <PropertyRef Name="id_estado_proyecto_kanban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Type="EFHModel.tb_proyecto" Role="tb_proyecto" Multiplicity="1" />
+          <End Type="EFHModel.tb_evento" Role="tb_evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_proyecto">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="tb_evento">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tb_criterios_aceptacion">
+          <Key>
+            <PropertyRef Name="id_criterio_aceptacion" />
+          </Key>
+          <Property Type="Int64" Name="id_criterio_aceptacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
+          <Property Type="Int32" Name="id_historia" Nullable="false" />
+          <Property Type="String" Name="titulo" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="usuario" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_historia_usuario">
+          <Key>
+            <PropertyRef Name="id_historia" />
+          </Key>
+          <Property Type="Int64" Name="id_historia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
+          <Property Type="Int32" Name="numero" Nullable="false" />
+          <Property Type="Int32" Name="id_prioridad" Nullable="false" />
+          <Property Type="Int32" Name="id_riesgo" Nullable="false" />
+          <Property Type="String" Name="titulo" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="usuario" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_plantilla_estados_proyectos_kanban">
+          <Key>
+            <PropertyRef Name="id_plantilla_proyectos_kanban" />
+          </Key>
+          <Property Type="Int32" Name="id_plantilla_proyectos_kanban" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_kanban" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="orden" />
+        </EntityType>
+        <EntityType Name="tb_prioridad">
+          <Key>
+            <PropertyRef Name="id_prioridad" />
+          </Key>
+          <Property Type="Int32" Name="id_prioridad" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="prioridad" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_riesgo">
+          <Key>
+            <PropertyRef Name="id_riesgo" />
+          </Key>
+          <Property Type="Int32" Name="id_riesgo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="riesgo" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_tipo_grupo">
+          <Key>
+            <PropertyRef Name="id_tipo_grupo" />
+          </Key>
+          <Property Type="Int64" Name="id_tipo_grupo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="tipo_grupo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="desc_tipo_grupo" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFHModelStoreContainer" CdmEntityContainer="EFHEntities">
+          <FunctionImportMapping FunctionImportName="efh_sp_iniciar_empresa" FunctionName="EFHModel.Store.efh_sp_iniciar_empresa" />
+          <EntitySetMapping Name="tb_empresa">
+            <EntityTypeMapping TypeName="EFHModel.tb_empresa">
+              <MappingFragment StoreEntitySet="tb_empresa">
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="iniciada" ColumnName="iniciada" />
+                <ScalarProperty Name="usuario_creador" ColumnName="usuario_creador" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="url_empresa" ColumnName="url_empresa" />
+                <ScalarProperty Name="nombre_empresa" ColumnName="nombre_empresa" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_usuario">
+            <EntityTypeMapping TypeName="EFHModel.tb_usuario">
+              <MappingFragment StoreEntitySet="tb_usuario">
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="por_confirmar" ColumnName="por_confirmar" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="ap_materno_usuario" ColumnName="ap_materno_usuario" />
+                <ScalarProperty Name="ap_paterno_usuario" ColumnName="ap_paterno_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="email_usuario" ColumnName="email_usuario" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_evento">
+            <EntityTypeMapping TypeName="EFHModel.tb_evento">
+              <MappingFragment StoreEntitySet="tb_evento">
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_creador" ColumnName="usuario_creador" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="detalle_evento" ColumnName="detalle_evento" />
+                <ScalarProperty Name="nombre_evento" ColumnName="nombre_evento" />
+                <ScalarProperty Name="fecha_evento" ColumnName="fecha_evento" />
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_agenda_telefonica">
+            <EntityTypeMapping TypeName="EFHModel.tb_agenda_telefonica">
+              <MappingFragment StoreEntitySet="tb_agenda_telefonica">
+                <ScalarProperty Name="id_tipo_numero" ColumnName="id_tipo_numero" />
+                <ScalarProperty Name="numero_agenda" ColumnName="numero_agenda" />
+                <ScalarProperty Name="id_agenda_telefonica" ColumnName="id_agenda_telefonica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_cliente_empresa">
+            <EntityTypeMapping TypeName="EFHModel.tb_cliente_empresa">
+              <MappingFragment StoreEntitySet="tb_cliente_empresa">
+                <ScalarProperty Name="nemo" ColumnName="nemo" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_detalle_agenda_telefonica">
+            <EntityTypeMapping TypeName="EFHModel.tb_detalle_agenda_telefonica">
+              <MappingFragment StoreEntitySet="tb_detalle_agenda_telefonica">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_agenda_telefonica" ColumnName="id_agenda_telefonica" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_detalle_agenda" ColumnName="id_detalle_agenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_detalle_rol">
+            <EntityTypeMapping TypeName="EFHModel.tb_detalle_rol">
+              <MappingFragment StoreEntitySet="tb_detalle_rol">
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="id_detalle_rol" ColumnName="id_detalle_rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_fases_proyecto">
+            <EntityTypeMapping TypeName="EFHModel.tb_fases_proyecto">
+              <MappingFragment StoreEntitySet="tb_fases_proyecto">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="nombre_fase" ColumnName="nombre_fase" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_fase_proyecto" ColumnName="id_fase_proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_grupo">
+            <EntityTypeMapping TypeName="EFHModel.tb_grupo">
+              <MappingFragment StoreEntitySet="tb_grupo">
+                <ScalarProperty Name="id_tipo_grupo" ColumnName="id_tipo_grupo" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="nombre_grupo" ColumnName="nombre_grupo" />
+                <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_grupo_usuario">
+            <EntityTypeMapping TypeName="EFHModel.tb_grupo_usuario">
+              <MappingFragment StoreEntitySet="tb_grupo_usuario">
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_grupo_usuario" ColumnName="id_grupo_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_regla">
+            <EntityTypeMapping TypeName="EFHModel.tb_regla">
+              <MappingFragment StoreEntitySet="tb_regla">
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_tipo_regla" ColumnName="id_tipo_regla" />
+                <ScalarProperty Name="valor_regla" ColumnName="valor_regla" />
+                <ScalarProperty Name="id_regla" ColumnName="id_regla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_roles">
+            <EntityTypeMapping TypeName="EFHModel.tb_roles">
+              <MappingFragment StoreEntitySet="tb_roles">
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="nombre_rol" ColumnName="nombre_rol" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tipo_numero">
+            <EntityTypeMapping TypeName="EFHModel.tb_tipo_numero">
+              <MappingFragment StoreEntitySet="tb_tipo_numero">
+                <ScalarProperty Name="tipo_numero" ColumnName="tipo_numero" />
+                <ScalarProperty Name="id_tipo_numero" ColumnName="id_tipo_numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tipo_regla">
+            <EntityTypeMapping TypeName="EFHModel.tb_tipo_regla">
+              <MappingFragment StoreEntitySet="tb_tipo_regla">
+                <ScalarProperty Name="tipo_regla" ColumnName="tipo_regla" />
+                <ScalarProperty Name="id_tipo_regla" ColumnName="id_tipo_regla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_estado_proyecto_kanban">
+            <EntityTypeMapping TypeName="EFHModel.tb_estado_proyecto_kanban">
+              <MappingFragment StoreEntitySet="tb_estado_proyecto_kanban">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="nombre_kanban" ColumnName="nombre_kanban" />
+                <ScalarProperty Name="id_estado_proyecto_kanban" ColumnName="id_estado_proyecto_kanban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_proyecto">
+            <EntityTypeMapping TypeName="EFHModel.tb_proyecto">
+              <MappingFragment StoreEntitySet="tb_proyecto">
+                <ScalarProperty Name="descripcion_proyecto" ColumnName="descripcion_proyecto" />
+                <ScalarProperty Name="es_tutorial" ColumnName="es_tutorial" />
+                <ScalarProperty Name="id_estado_proyecto_kanban" ColumnName="id_estado_proyecto_kanban" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="id_responsable_proyecto_cliente" ColumnName="id_responsable_proyecto_cliente" />
+                <ScalarProperty Name="id_responsable_proyecto" ColumnName="id_responsable_proyecto" />
+                <ScalarProperty Name="horas_estimadas" ColumnName="horas_estimadas" />
+                <ScalarProperty Name="fecha_fin_real" ColumnName="fecha_fin_real" />
+                <ScalarProperty Name="fecha_inicio_real" ColumnName="fecha_inicio_real" />
+                <ScalarProperty Name="fecha_fin_estimado" ColumnName="fecha_fin_estimado" />
+                <ScalarProperty Name="fecha_inicio_estimado" ColumnName="fecha_inicio_estimado" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="nombre_proyecto" ColumnName="nombre_proyecto" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_criterios_aceptacion">
+            <EntityTypeMapping TypeName="EFHModel.tb_criterios_aceptacion">
+              <MappingFragment StoreEntitySet="tb_criterios_aceptacion">
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_criterio_aceptacion" ColumnName="id_criterio_aceptacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_historia_usuario">
+            <EntityTypeMapping TypeName="EFHModel.tb_historia_usuario">
+              <MappingFragment StoreEntitySet="tb_historia_usuario">
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_riesgo" ColumnName="id_riesgo" />
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_plantilla_estados_proyectos_kanban">
+            <EntityTypeMapping TypeName="EFHModel.tb_plantilla_estados_proyectos_kanban">
+              <MappingFragment StoreEntitySet="tb_plantilla_estados_proyectos_kanban">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="nombre_kanban" ColumnName="nombre_kanban" />
+                <ScalarProperty Name="id_plantilla_proyectos_kanban" ColumnName="id_plantilla_proyectos_kanban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_prioridad">
+            <EntityTypeMapping TypeName="EFHModel.tb_prioridad">
+              <MappingFragment StoreEntitySet="tb_prioridad">
+                <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_riesgo">
+            <EntityTypeMapping TypeName="EFHModel.tb_riesgo">
+              <MappingFragment StoreEntitySet="tb_riesgo">
+                <ScalarProperty Name="riesgo" ColumnName="riesgo" />
+                <ScalarProperty Name="id_riesgo" ColumnName="id_riesgo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tipo_grupo">
+            <EntityTypeMapping TypeName="EFHModel.tb_tipo_grupo">
+              <MappingFragment StoreEntitySet="tb_tipo_grupo">
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="desc_tipo_grupo" ColumnName="desc_tipo_grupo" />
+                <ScalarProperty Name="tipo_grupo" ColumnName="tipo_grupo" />
+                <ScalarProperty Name="id_tipo_grupo" ColumnName="id_tipo_grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,134 @@
+﻿<section id="seccionKanbanBoard">
+    <div>
+        <h2>Kanban de Proyectos</h2>
+
+        <div class="form-search">
+            <div class="input-append">
+                <input id="search-query" type="text" class="input-xlarge search-query" placeholder="Filtrar por Nombre de Proyecto" 
+                    data-bind="value: varSearch, event: { keypress: searchEnter }">
+                <button id="btnSearch" class="btn" type="button" data-bind='click: search'>Buscar</button>
+            </div>
+            <button class="btn btn-link AddProyecto" type="button" data-bind="click: AddProyecto">Agregar Proyecto</button>
+        </div>
+        <!--<p>This page uses only HTML, CSS and JavaScript (jQuery &amp; jQuery UI).</p>-->
+    </div>
+    <br />
+    <!--<h3>Project ABC</h3>-->
+    <div id="kanbanBoardPadre">
+        <!--<div id="lanes" data-bind="kanbanProyectos: { estadosKanbanProyecto: estadosKanbanProyecto }, foreach: estadosKanbanProyecto">-->
+        <div id="lanes" data-bind="template: { foreach: estadosKanbanProyecto, afterRender: estadosKanbanProyectoCallback }">
+            <div class="column" data-bind="attr: { id: kanbanProyecto.id_estado_proyecto_kanban + '-div' }">
+                <h3><span data-bind="text: kanbanProyecto.nombre_kanban"></span></h3>
+                <ul class="wipDrop tasks taskboard" style="cursor: pointer;" data-bind="attr: { id: kanbanProyecto.id_estado_proyecto_kanban }, template: { foreach: proyectos }">
+                    <li data-bind="attr: { id: proyecto.id_proyecto }">
+                        <span class="task">
+                            <span class='title-bar'><span class="showTooltip" data-bind="text: nemoCliente, attr: { title: 'Cliente: ' + nombreCliente }">0</span>
+                                <span class='status good tipme showTooltip' title='El proyecto no tiene estado'></span>
+                                <span class='user' data-bind="text: nombreResponsable">Usuario</span>
+                            </span>
+                            <span class='title'><span data-bind="text: proyecto.nombre_proyecto">Nombre proyecto.</span>
+                                <button class='expandTask column-button ui-button ui-state-default ui-corner-all'><i class="icon-chevron-right"></i></button>
+                            </span>
+                            <span class='details' data-bind="text: proyecto.descripcion_proyecto">cccccc.</span>
+                            <span class='footer'>
+                                <!--<button class='editTask ui-button ui-state-default ui-corner-all'><i class="icon-edit"></i></button>-->
+                                <div class="dropdown-submenu  ui-button">
+                                    <button class="btn btn-link" tabindex="-1"><i class="icon-edit"></i></button>
+                                    <p class="dropdown-menu">
+                                        <button tabindex="-1" class='btn btn-link btnEditarProyecto' data-bind="attr: { id_proyecto: proyecto.id_proyecto, id_estado_proyecto_kanban: proyecto.id_estado_proyecto_kanban }"><i class="icon-edit"> </i>Editar</button>
+                                        <button tabindex="-1" class='btn btn-link btnVerTareas' data-bind="attr: { id_proyecto: proyecto.id_proyecto }"><i class="icon-tasks"> </i>Ver Tareas</button>
+                                    </p>
+                                </div>
+                                <span class='estimate'>Estimado:<span class='value' data-bind="text: $.formatNumber(proyecto.horas_estimadas, { format: '#,##0.#', locale: 'es' })">0</span></span>
+                                <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Proyecto</h3>
+        </div>
+        <div class="modal-body form-horizontal">
+            <fieldset>
+                <!--<div><span data-bind='text: objFormulario.errors().length'></span>errors</div>-->
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.valueCliente.isValid()) }">
+                    <label for="Nombre" class="control-label">JP Cliente</label>
+                    <div class="controls">
+                        <select data-bind="options: varSelectCliente, optionsText: 'valor', optionsValue: 'llave', value: objFormulario.valueCliente, optionsCaption: 'Escoger opción'"></select>
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.valueCliente"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.nombreProyecto.isValid()) }">
+                    <label for="Nombre" class="control-label">Nombre</label>
+                    <div class="controls">
+                        <input data-bind='value: objFormulario.nombreProyecto' type="text" name="Nombre" id="Nombre" placeholder="Nombre del Proyecto">
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.nombreProyecto"></span>
+                        <!--<span data-valmsg-replace="true" data-valmsg-for="Email" class="field-validation-valid"></span>-->
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.descProyecto.isValid()) }">
+                    <label for="descProyecto" class="control-label">Descripción</label>
+                    <div class="controls">
+                        <textarea data-bind='value: objFormulario.descProyecto' rows="3" name="descProyecto" id="descProyecto" placeholder="Descripción del Proyecto"></textarea>
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.descProyecto"></span>
+                        <!--<span data-valmsg-replace="true" data-valmsg-for="Email" class="field-validation-valid"></span>-->
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.fecIniEstimado.isValid()) }">
+                    <label for="fecIniEstimado" class="control-label">Fecha Inicio Estimada</label>
+                    <div class="controls">
+                        <div class="input-append">
+                            <input class="uneditable-input span2" data-bind='datepicker: objFormulario.fecIniEstimado, datepickerOptions: { changeMonth: false, changeYear: false }'
+                                name="fecIniEstimado" id="fecIniEstimado" placeholder="Fecha">
+                            <button class="btn" type="button" btnfor="fecIniEstimado" data-bind="click: OpenCalendar"><i class="icon-calendar"></i></button>
+                        </div>
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.fecIniEstimado"></span>
+                        <!--<span data-valmsg-replace="true" data-valmsg-for="Email" class="field-validation-valid"></span>-->
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.valueResponsablesProyecto.isValid()) }">
+                    <label for="Nombre" class="control-label">JP Responsable</label>
+                    <div class="controls">
+                        <select data-bind="options: varSelectResponsablesProyecto, optionsText: 'valor', optionsValue: 'llave', value: objFormulario.valueResponsablesProyecto, optionsCaption: 'Escoger opción'"></select>
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.valueResponsablesProyecto"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.valueResponsablesCliente.isValid()) }">
+                    <label for="Nombre" class="control-label">JP Cliente</label>
+                    <div class="controls">
+                        <select data-bind="options: varSelectResponsablesCliente, optionsText: 'valor', optionsValue: 'llave', value: objFormulario.valueResponsablesCliente, optionsCaption: 'Escoger opción'"></select>
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.valueResponsablesCliente"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormulario.validarCampos(), objFormulario.horasEstimadas.isValid()) }">
+                    <label for="horasEstimadas" class="control-label">Horas Estimadas</label>
+                    <div class="controls">
+                        <input data-bind='value: objFormulario.horasEstimadas' type="number" name="horasEstimadas" id="horasEstimadas" placeholder="Horas Estimadas">
+                        <span class="help-inline" data-bind="validationMessage: objFormulario.horasEstimadas"></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary" data-bind='click: objFormulario.submit'>Save changes</button>
+        </div>
+    </div>
+</section>
+<!--<section id="variablesProyectos" style="display: none;">
+    <div id="varSelectResponsablesProyecto">
+        <select tabindex='0' data-bind="foreach: varSelectResponsablesProyecto">
+            <option data-bind="text: nombre_usuario + ' ' + ap_paterno_usuario, value: id_usuario"></option>
+        </select>
+    </div>
+    <div id="varSelectResponsablesCliente">
+        <select tabindex='0' data-bind="foreach: varSelectResponsablesCliente">
+            <option data-bind="text: nombre_usuario + ' ' + ap_paterno_usuario, value: id_usuario"></option>
+        </select>
+    </div>
+</section>-->

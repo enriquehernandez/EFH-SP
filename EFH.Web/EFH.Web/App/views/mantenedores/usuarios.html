@@ -1,0 +1,15 @@
+﻿<section>
+    <style>
+        #gridUsuarios {
+            background: white;
+            outline: 0;
+            border: 1px solid gray;
+        }
+    </style>
+    <h2 class="page-title" data-bind="text: title"></h2>
+
+    <div id="contenedorGrillaUsuarios" data-bind="slickGridUsuarios: { datos: usuarios, configuracionGrillas: configuracionGrillas }">
+        <div id="gridUsuarios" style="width: 900px; height: 277px;"></div>
+        <div id="pagerUsuarios" style="width: 900px; height: 20px;"></div>
+    </div>
+</section>

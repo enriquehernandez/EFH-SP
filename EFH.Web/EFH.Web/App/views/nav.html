@@ -1,0 +1,44 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top" id="navInterno">
+    <div class="navbar-inner">
+        <div class="container">
+            <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="brand">EFH - Gestor de Proyectos</a>
+            <div class="nav-collapse collapse" id="navegadorInterno" data-bind="navegadorInterno: { nameUsuarioConectado: nameUsuarioConectado }">
+                <ul class="nav" data-bind="foreach: router.visibleRoutes">
+                    <li class="">
+                        <a data-bind="attr: { href: hash }, css: { active: isActive }, html: settings.caption"
+                            class=""></a>
+                    </li>
+                </ul>
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-wrench"></i> Mantenedor <b class="caret"></b></a>
+                        <ul class="dropdown-menu" data-bind="foreach: mantenedorRoutes">
+                            <li><a data-bind="click: $parent.addSession, html: settings.caption" href="#"></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="navegadorInternoLogin" class="nav pull-right"></div>
+                <!--@Html.Partial("_LoginPartial")-->
+                <!--<ul class="nav pull-right">
+                    <p class="navbar-text pull-left">
+                        Hola, 
+                        <a id="registerLink" class="navbar-link" href="/Account/Manage" data-bind="text: nameUsuarioConectado">User.Identity.Name</a>
+                    </p>
+                    <li class="divider-vertical"></li>
+                    <form method="post" id="logoutForm" class="navbar-form pull-right" action="/Account/LogOff">
+                        <p class="navbar-text pull-right">
+                            <input type="hidden" value="Q8Ry_k0Hn7qcSMq1JHVdDbrTtjHcL1owc1kVfh81Ne5MlZkkFrtFGgaI9N2Gr-OE0EqBZ6pWPO7vCd5Yjfc4B-g6kd68iDxs19TO6cQIOPt2A_1Wl4j3dPo0nRkYai1d0" name="__RequestVerificationToken">
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </p>
+                    </form>
+                </ul>-->
+
+            </div>
+        </div>
+    </div>
+</div>

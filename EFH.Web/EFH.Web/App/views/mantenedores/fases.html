@@ -1,0 +1,19 @@
+﻿<section>
+    <style>
+        #gridFases {
+            background: white;
+            outline: 0;
+            border: 1px solid gray;
+        }
+    </style>
+    <h2 class="page-title" data-bind="text: title"></h2>
+
+    <div class="input-append">
+        <input class="span12" id="nombreFase" type="text" placeholder="Nueva Fase!">
+        <button class="btn btnAddFase" type="button" data-bind="click: AddFase">Agregar</button>
+    </div>
+    <div id="contenedorGrillaFase" data-bind="slickGridFases: { datos: fases, configuracionGrillas: configuracionGrillas }">
+        <div id="gridFases" style="width: 600px; height: 277px;"></div>
+        <div id="pagerFases" style="width: 600px; height: 20px;"></div>
+    </div>
+</section>

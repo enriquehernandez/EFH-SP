@@ -1,0 +1,45 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+    @*Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }*@
+    <ul class="nav pull-right">
+        <li class="navbar-text pull-left" style="min-width:156px;">
+            Hola, 
+            @using (Html.BeginForm("Manage", "Account", FormMethod.Get, new { id = "registerLink", @class = "navbar-form pull-right" }))
+            {
+                <p class="navbar-text pull-right">
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('registerLink').submit()">@User.Identity.Name</a>
+                </p>
+            }
+        </li>
+        @*<p class="navbar-text pull-left">
+            Hola, 
+            <a href="@Url.Action("Manage", "Account")" class="navbar-link" id="registerLink">@User.Identity.Name</a>
+        </p>*@
+        <li class="divider-vertical"></li>
+        <li class="navbar-text pull-right">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-form pull-right" }))
+            {
+                <p class="navbar-text pull-right">
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-signout"> </i>Salir</a>
+                </p>
+            }
+        </li>
+    </ul>
+    </text>
+}
+else
+{
+    <ul class="nav">
+        <li><a href="@Url.Action("Register", "Account")" id="registerLink"><i class="icon-plus-sign-alt"> </i>Registro</a></li>
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li><a href="@Url.Action("Login", "Account")" id="loginLink"><i class="icon-signin"> </i>Ingresar</a></li>
+        @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+    </ul>
+}

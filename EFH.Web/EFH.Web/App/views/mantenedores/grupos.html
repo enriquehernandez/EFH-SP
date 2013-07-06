@@ -1,0 +1,19 @@
+﻿<section>
+    <style>
+        #gridGrupo {
+            background: white;
+            outline: 0;
+            border: 1px solid gray;
+        }
+    </style>
+    <h2 class="page-title" data-bind="text: title"></h2>
+
+    <div class="input-append">
+        <input class="span12" id="nombreGrupo" type="text" placeholder="Nuevo Grupo!">
+        <button class="btn AddGrupo" type="button" data-bind="click: AddGrupo">Agregar</button>
+    </div>
+    <div id="contenedorGrillaGrupo" data-bind="slickGridGrupos: { datos: grupos, configuracionGrillas: configuracionGrillas }">
+        <div id="gridGrupo" style="width: 800px; height: 277px;"></div>
+        <div id="pagerGrupo" style="width: 800px; height: 20px;"></div>
+    </div>
+</section>

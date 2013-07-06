@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - @ViewBag.Empresa</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body
+        {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav
+        {
+            padding: 9px 0;
+        }
+
+        @@media (max-width: 980px)
+        {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right
+            {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink(ViewBag.Title, "Index", "Home", null, htmlAttributes: new { @class = "brand" })*@
+                <a href="@Url.Action("Index", "EFH")" class="brand">@ViewBag.Empresa</a>
+                <div class="nav-collapse collapse">
+                    @*<p class="navbar-text pull-right">
+                            Logged in as <a class="navbar-link" href="#">Username</a>
+                        </p>*@
+                    <ul class="nav">
+                        <li><a href="@Url.Action("Index", "EFH")"><i class="icon-home"> </i> Inicio</a></li>
+                        <li><a href="@Url.Action("About", "Home")"><i class="icon-info"> </i> Información</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")"><i class="icon-phone"> </i> Contacto</a></li>
+                        @*<li>@Html.ActionLink("Información", "About", "Home")</li>
+                        <li><i class="icon-phone"> </i> @Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li class="divider-vertical"></li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+        <footer>
+            <div class="row-fluid">
+                <address>
+                    <strong>Programado por:</strong><br />
+                </address>
+                <div class="span4">
+                    <address>
+                        <small>Enrique Castro Monsalves</small><br />
+                        <small>Twitter, @@enriquecastro</small><br />
+                        <a mailto="">enrique.castro@gmail.com</a>
+                    </address>
+                </div>
+                <div class="span4">
+                    <address>
+                        <small>Enrique Hernández</small><br />
+                        <small>Twitter, @@en_hernandez</small><br />
+                        <a mailto="">ehl.net@gmail.com</a>
+                    </address>
+                </div>
+            </div>
+            <hr />
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - EFH</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

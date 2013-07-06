@@ -1,0 +1,74 @@
+﻿@model EFH.Web.Models.LoginModelEFH
+
+@{
+    ViewBag.Title = "Ingresar al Sistema";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+    @*<h2>Use a local account to log in.</h2>*@
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>@*Ingresar al Sistema*@</legend>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        @Html.TextBoxFor(m => m.Email)
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-key"></i></span>
+                        @Html.PasswordFor(m => m.Password)
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-primary" type="submit" value="Ingresar" />
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    @Html.ActionLink("Registrarme", "Register") si no tengo una cuenta.
+                </div>
+                <div class="controls">
+                    @Html.ActionLink("Recuperar", "ForgotPassword") clave.
+                </div>
+            </div>
+        </fieldset>
+        <p>
+        </p>
+    }
+</section>
+
+@*<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

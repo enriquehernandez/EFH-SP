@@ -1,0 +1,39 @@
+﻿<section>
+    <style>
+        #gridRoles {
+            background: white;
+            outline: 0;
+            border: 1px solid gray;
+        }
+    </style>
+    <h2 class="page-title" data-bind="text: title"></h2>
+
+    <!--Rolessss
+    <div data-bind="text: 'Roles: ' + roles().length"></div>-->
+
+    <div class="input-append">
+        <input class="span12" id="nombreRol" type="text" placeholder="Nuevo Rol!">
+        <button class="btn btnAddRol" type="button" data-bind="click: AddRol">Agregar</button>
+    </div>
+    <div id="contenedorGrillaRol" data-bind="slickGridRoles: { datos: roles, configuracionGrillas: configuracionGrillas }">
+        <div id="gridRoles" style="width: 500px; height: 277px;"></div>
+        <div id="pagerRoles" style="width: 500px; height: 20px;"></div>
+    </div>
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ROL</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: roles">
+            <tr>
+                <td data-bind="text: id_rol"></td>
+                <td data-bind="text: nombre_rol"></td>
+            </tr>
+        </tbody>
+    </table>-->
+</section>

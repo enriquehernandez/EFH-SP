@@ -1,0 +1,19 @@
+﻿<section>
+    <style>
+        #gridCliente {
+            background: white;
+            outline: 0;
+            border: 1px solid gray;
+        }
+    </style>
+    <h2 class="page-title" data-bind="text: title"></h2>
+
+    <div class="input-append">
+        <input class="span12" id="nombreCliente" type="text" placeholder="Nuevo Cliente!">
+        <button class="btn AddCliente" type="button" data-bind="click: AddCliente">Agregar</button>
+    </div>
+    <div id="contenedorGrillaCliente" data-bind="slickGridClientes: { datos: clientes, configuracionGrillas: configuracionGrillas }">
+        <div id="gridCliente" style="width: 600px; height: 277px;"></div>
+        <div id="pagerCliente" style="width: 600px; height: 20px;"></div>
+    </div>
+</section>
