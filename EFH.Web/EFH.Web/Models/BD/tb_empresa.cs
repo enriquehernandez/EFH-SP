@@ -23,6 +23,7 @@ namespace EFH.Web.Models.BD
             this.tb_roles = new HashSet<tb_roles>();
             this.tb_estado_proyecto_kanban = new HashSet<tb_estado_proyecto_kanban>();
             this.tb_proyecto = new HashSet<tb_proyecto>();
+            this.tb_estado_tarea_kanban = new HashSet<tb_estado_tarea_kanban>();
         }
     
         public long id_empresa { get; set; }
@@ -40,5 +41,6 @@ namespace EFH.Web.Models.BD
         public virtual ICollection<tb_roles> tb_roles { get; set; }
         public virtual ICollection<tb_estado_proyecto_kanban> tb_estado_proyecto_kanban { get; set; }
         public virtual ICollection<tb_proyecto> tb_proyecto { get; set; }
+        public virtual ICollection<tb_estado_tarea_kanban> tb_estado_tarea_kanban { get; set; }
     }
 }

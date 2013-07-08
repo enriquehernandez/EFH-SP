@@ -13,6 +13,7 @@
           <EntitySet Name="tb_detalle_rol" EntityType="EFHModel.Store.tb_detalle_rol" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_empresa" EntityType="EFHModel.Store.tb_empresa" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_estado_proyecto_kanban" EntityType="EFHModel.Store.tb_estado_proyecto_kanban" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_estado_tarea_kanban" EntityType="EFHModel.Store.tb_estado_tarea_kanban" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_evento" EntityType="EFHModel.Store.tb_evento" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_fases_proyecto" EntityType="EFHModel.Store.tb_fases_proyecto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_grupo" EntityType="EFHModel.Store.tb_grupo" store:Type="Tables" Schema="dbo" />
@@ -24,10 +25,15 @@
           <EntitySet Name="tb_regla" EntityType="EFHModel.Store.tb_regla" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_riesgo" EntityType="EFHModel.Store.tb_riesgo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_roles" EntityType="EFHModel.Store.tb_roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_tarea" EntityType="EFHModel.Store.tb_tarea" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_tipo_grupo" EntityType="EFHModel.Store.tb_tipo_grupo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_tipo_numero" EntityType="EFHModel.Store.tb_tipo_numero" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_tipo_regla" EntityType="EFHModel.Store.tb_tipo_regla" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tb_usuario" EntityType="EFHModel.Store.tb_usuario" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tb_estados_tareas_kanban_tb_empresa" Association="EFHModel.Store.FK_tb_estados_tareas_kanban_tb_empresa">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_estado_tarea_kanban" EntitySet="tb_estado_tarea_kanban" />
+          </AssociationSet>
           <AssociationSet Name="R_1" Association="EFHModel.Store.R_1">
             <End Role="tb_empresa" EntitySet="tb_empresa" />
             <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
@@ -60,6 +66,14 @@
             <End Role="tb_estado_proyecto_kanban" EntitySet="tb_estado_proyecto_kanban" />
             <End Role="tb_proyecto" EntitySet="tb_proyecto" />
           </AssociationSet>
+          <AssociationSet Name="R_26" Association="EFHModel.Store.R_26">
+            <End Role="tb_estado_tarea_kanban" EntitySet="tb_estado_tarea_kanban" />
+            <End Role="tb_tarea" EntitySet="tb_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="R_28" Association="EFHModel.Store.R_28">
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+            <End Role="tb_tarea" EntitySet="tb_tarea" />
+          </AssociationSet>
           <AssociationSet Name="R_29" Association="EFHModel.Store.R_29">
             <End Role="tb_empresa" EntitySet="tb_empresa" />
             <End Role="tb_fases_proyecto" EntitySet="tb_fases_proyecto" />
@@ -67,6 +81,10 @@
           <AssociationSet Name="R_3" Association="EFHModel.Store.R_3">
             <End Role="tb_usuario" EntitySet="tb_usuario" />
             <End Role="tb_detalle_agenda_telefonica" EntitySet="tb_detalle_agenda_telefonica" />
+          </AssociationSet>
+          <AssociationSet Name="R_30" Association="EFHModel.Store.R_30">
+            <End Role="tb_fases_proyecto" EntitySet="tb_fases_proyecto" />
+            <End Role="tb_tarea" EntitySet="tb_tarea" />
           </AssociationSet>
           <AssociationSet Name="R_4" Association="EFHModel.Store.R_4">
             <End Role="tb_empresa" EntitySet="tb_empresa" />
@@ -163,6 +181,15 @@
           <Property Name="id_empresa" Type="bigint" Nullable="false" />
           <Property Name="orden" Type="int" />
         </EntityType>
+        <EntityType Name="tb_estado_tarea_kanban">
+          <Key>
+            <PropertyRef Name="id_estado_tarea_kanban" />
+          </Key>
+          <Property Name="id_estado_tarea_kanban" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_kanban" Type="varchar" MaxLength="100" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="orden" Type="int" />
+        </EntityType>
         <EntityType Name="tb_evento">
           <Key>
             <PropertyRef Name="id_evento" />
@@ -212,13 +239,15 @@
           <Property Name="id_historia" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="id_empresa" Type="bigint" Nullable="false" />
           <Property Name="id_proyecto" Type="bigint" Nullable="false" />
-          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="6" />
           <Property Name="id_prioridad" Type="int" Nullable="false" />
           <Property Name="id_riesgo" Type="int" Nullable="false" />
           <Property Name="titulo" Type="varchar" MaxLength="150" />
           <Property Name="descripcion" Type="varchar(max)" />
-          <Property Name="usuario" Type="bigint" />
+          <Property Name="id_responsable" Type="bigint" />
           <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="id_usuario_creador" Type="bigint" />
+          <Property Name="orden" Type="int" />
         </EntityType>
         <EntityType Name="tb_plantilla_estados_proyectos_kanban">
           <Key>
@@ -282,6 +311,26 @@
           <Property Name="id_empresa" Type="bigint" Nullable="false" />
           <Property Name="inactivo" Type="bit" />
         </EntityType>
+        <EntityType Name="tb_tarea">
+          <Key>
+            <PropertyRef Name="id_tarea" />
+          </Key>
+          <Property Name="id_tarea" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_tarea" Type="varchar" MaxLength="100" />
+          <Property Name="detalle_tarea" Type="varchar(max)" />
+          <Property Name="fecha_inicio_tarea" Type="datetime" />
+          <Property Name="id_responsable_tarea" Type="bigint" />
+          <Property Name="inactivo" Type="bit" />
+          <Property Name="id_estado_tarea_kanban" Type="bigint" Nullable="false" />
+          <Property Name="id_proyecto" Type="bigint" Nullable="false" />
+          <Property Name="id_fase_proyecto" Type="bigint" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="id_usuario_creador" Type="bigint" />
+          <Property Name="id_historia" Type="bigint" />
+          <Property Name="horas_estimadas" Type="float" />
+          <Property Name="id_empresa" Type="bigint" Nullable="false" />
+          <Property Name="orden" Type="int" />
+        </EntityType>
         <EntityType Name="tb_tipo_grupo">
           <Key>
             <PropertyRef Name="id_tipo_grupo" />
@@ -320,6 +369,18 @@
           <Property Name="id_empresa" Type="bigint" Nullable="false" />
           <Property Name="fecha_creacion" Type="datetime" />
         </EntityType>
+        <Association Name="FK_tb_estados_tareas_kanban_tb_empresa">
+          <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
+          <End Role="tb_estado_tarea_kanban" Type="EFHModel.Store.tb_estado_tarea_kanban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_estado_tarea_kanban">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_1">
           <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="0..1" />
           <End Role="tb_detalle_agenda_telefonica" Type="EFHModel.Store.tb_detalle_agenda_telefonica" Multiplicity="*" />
@@ -416,6 +477,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="R_26">
+          <End Role="tb_estado_tarea_kanban" Type="EFHModel.Store.tb_estado_tarea_kanban" Multiplicity="1" />
+          <End Role="tb_tarea" Type="EFHModel.Store.tb_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_estado_tarea_kanban">
+              <PropertyRef Name="id_estado_tarea_kanban" />
+            </Principal>
+            <Dependent Role="tb_tarea">
+              <PropertyRef Name="id_estado_tarea_kanban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_28">
+          <End Role="tb_proyecto" Type="EFHModel.Store.tb_proyecto" Multiplicity="1" />
+          <End Role="tb_tarea" Type="EFHModel.Store.tb_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_proyecto">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="tb_tarea">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_29">
           <End Role="tb_empresa" Type="EFHModel.Store.tb_empresa" Multiplicity="1" />
           <End Role="tb_fases_proyecto" Type="EFHModel.Store.tb_fases_proyecto" Multiplicity="*" />
@@ -437,6 +522,18 @@
             </Principal>
             <Dependent Role="tb_detalle_agenda_telefonica">
               <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_30">
+          <End Role="tb_fases_proyecto" Type="EFHModel.Store.tb_fases_proyecto" Multiplicity="1" />
+          <End Role="tb_tarea" Type="EFHModel.Store.tb_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_fases_proyecto">
+              <PropertyRef Name="id_fase_proyecto" />
+            </Principal>
+            <Dependent Role="tb_tarea">
+              <PropertyRef Name="id_fase_proyecto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -604,11 +701,29 @@
             <End Role="tb_evento" EntitySet="tb_evento" />
           </AssociationSet>
           <EntitySet Name="tb_criterios_aceptacion" EntityType="EFHModel.tb_criterios_aceptacion" />
-          <EntitySet Name="tb_historia_usuario" EntityType="EFHModel.tb_historia_usuario" />
           <EntitySet Name="tb_plantilla_estados_proyectos_kanban" EntityType="EFHModel.tb_plantilla_estados_proyectos_kanban" />
           <EntitySet Name="tb_prioridad" EntityType="EFHModel.tb_prioridad" />
           <EntitySet Name="tb_riesgo" EntityType="EFHModel.tb_riesgo" />
           <EntitySet Name="tb_tipo_grupo" EntityType="EFHModel.tb_tipo_grupo" />
+          <EntitySet Name="tb_estado_tarea_kanban" EntityType="EFHModel.tb_estado_tarea_kanban" />
+          <AssociationSet Name="FK_tb_estados_tareas_kanban_tb_empresa" Association="EFHModel.FK_tb_estados_tareas_kanban_tb_empresa">
+            <End Role="tb_empresa" EntitySet="tb_empresa" />
+            <End Role="tb_estado_tarea_kanban" EntitySet="tb_estado_tarea_kanban" />
+          </AssociationSet>
+          <EntitySet Name="tb_historia_usuario" EntityType="EFHModel.tb_historia_usuario" />
+          <EntitySet Name="tb_tarea" EntityType="EFHModel.tb_tarea" />
+          <AssociationSet Name="R_26" Association="EFHModel.R_26">
+            <End Role="tb_estado_tarea_kanban" EntitySet="tb_estado_tarea_kanban" />
+            <End Role="tb_tarea" EntitySet="tb_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="R_30" Association="EFHModel.R_30">
+            <End Role="tb_fases_proyecto" EntitySet="tb_fases_proyecto" />
+            <End Role="tb_tarea" EntitySet="tb_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="R_28" Association="EFHModel.R_28">
+            <End Role="tb_proyecto" EntitySet="tb_proyecto" />
+            <End Role="tb_tarea" EntitySet="tb_tarea" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="tb_empresa">
           <Key>
@@ -628,6 +743,7 @@
           <NavigationProperty Name="tb_roles" Relationship="EFHModel.R_5" FromRole="tb_empresa" ToRole="tb_roles" />
           <NavigationProperty Name="tb_estado_proyecto_kanban" Relationship="EFHModel.R_23" FromRole="tb_empresa" ToRole="tb_estado_proyecto_kanban" />
           <NavigationProperty Name="tb_proyecto" Relationship="EFHModel.R_9" FromRole="tb_empresa" ToRole="tb_proyecto" />
+          <NavigationProperty Name="tb_estado_tarea_kanban" Relationship="EFHModel.FK_tb_estados_tareas_kanban_tb_empresa" FromRole="tb_empresa" ToRole="tb_estado_tarea_kanban" />
         </EntityType>
         <EntityType Name="tb_usuario">
           <Key>
@@ -727,6 +843,7 @@
           <Property Type="Boolean" Name="inactivo" />
           <Property Type="Int32" Name="orden" />
           <NavigationProperty Name="tb_empresa" Relationship="EFHModel.R_29" FromRole="tb_fases_proyecto" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_tarea" Relationship="EFHModel.R_30" FromRole="tb_fases_proyecto" ToRole="tb_tarea" />
         </EntityType>
         <EntityType Name="tb_grupo">
           <Key>
@@ -953,6 +1070,7 @@
           <NavigationProperty Name="tb_estado_proyecto_kanban" Relationship="EFHModel.R_24" FromRole="tb_proyecto" ToRole="tb_estado_proyecto_kanban" />
           <NavigationProperty Name="tb_evento" Relationship="EFHModel.R_17" FromRole="tb_proyecto" ToRole="tb_evento" />
           <Property Type="String" Name="descripcion_proyecto" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_tarea" Relationship="EFHModel.R_28" FromRole="tb_proyecto" ToRole="tb_tarea" />
         </EntityType>
         <Association Name="R_23">
           <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
@@ -1015,21 +1133,6 @@
           <Property Type="Int64" Name="usuario" />
           <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
         </EntityType>
-        <EntityType Name="tb_historia_usuario">
-          <Key>
-            <PropertyRef Name="id_historia" />
-          </Key>
-          <Property Type="Int64" Name="id_historia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="id_empresa" Nullable="false" />
-          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
-          <Property Type="Int32" Name="numero" Nullable="false" />
-          <Property Type="Int32" Name="id_prioridad" Nullable="false" />
-          <Property Type="Int32" Name="id_riesgo" Nullable="false" />
-          <Property Type="String" Name="titulo" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="usuario" />
-          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
-        </EntityType>
         <EntityType Name="tb_plantilla_estados_proyectos_kanban">
           <Key>
             <PropertyRef Name="id_plantilla_proyectos_kanban" />
@@ -1061,6 +1164,105 @@
           <Property Type="String" Name="desc_tipo_grupo" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="id_empresa" Nullable="false" />
         </EntityType>
+        <EntityType Name="tb_estado_tarea_kanban">
+          <Key>
+            <PropertyRef Name="id_estado_tarea_kanban" />
+          </Key>
+          <Property Type="Int64" Name="id_estado_tarea_kanban" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_kanban" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int32" Name="orden" />
+          <NavigationProperty Name="tb_empresa" Relationship="EFHModel.FK_tb_estados_tareas_kanban_tb_empresa" FromRole="tb_estado_tarea_kanban" ToRole="tb_empresa" />
+          <NavigationProperty Name="tb_tarea" Relationship="EFHModel.R_26" FromRole="tb_estado_tarea_kanban" ToRole="tb_tarea" />
+        </EntityType>
+        <Association Name="FK_tb_estados_tareas_kanban_tb_empresa">
+          <End Type="EFHModel.tb_empresa" Role="tb_empresa" Multiplicity="1" />
+          <End Type="EFHModel.tb_estado_tarea_kanban" Role="tb_estado_tarea_kanban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="tb_estado_tarea_kanban">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tb_historia_usuario">
+          <Key>
+            <PropertyRef Name="id_historia" />
+          </Key>
+          <Property Type="Int64" Name="id_historia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_prioridad" Nullable="false" />
+          <Property Type="Int32" Name="id_riesgo" Nullable="false" />
+          <Property Type="String" Name="titulo" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_responsable" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <Property Type="Int64" Name="id_usuario_creador" />
+          <Property Type="Int32" Name="orden" />
+        </EntityType>
+        <EntityType Name="tb_tarea">
+          <Key>
+            <PropertyRef Name="id_tarea" />
+          </Key>
+          <Property Type="Int64" Name="id_tarea" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_tarea" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="detalle_tarea" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fecha_inicio_tarea" Precision="3" />
+          <Property Type="Int64" Name="id_responsable_tarea" />
+          <Property Type="Boolean" Name="inactivo" />
+          <Property Type="Int64" Name="id_estado_tarea_kanban" Nullable="false" />
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
+          <Property Type="Int64" Name="id_fase_proyecto" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <Property Type="Int64" Name="id_usuario_creador" />
+          <Property Type="Int64" Name="id_historia" />
+          <Property Type="Double" Name="horas_estimadas" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int32" Name="orden" />
+          <NavigationProperty Name="tb_estado_tarea_kanban" Relationship="EFHModel.R_26" FromRole="tb_tarea" ToRole="tb_estado_tarea_kanban" />
+          <NavigationProperty Name="tb_fases_proyecto" Relationship="EFHModel.R_30" FromRole="tb_tarea" ToRole="tb_fases_proyecto" />
+          <NavigationProperty Name="tb_proyecto" Relationship="EFHModel.R_28" FromRole="tb_tarea" ToRole="tb_proyecto" />
+        </EntityType>
+        <Association Name="R_26">
+          <End Type="EFHModel.tb_estado_tarea_kanban" Role="tb_estado_tarea_kanban" Multiplicity="1" />
+          <End Type="EFHModel.tb_tarea" Role="tb_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_estado_tarea_kanban">
+              <PropertyRef Name="id_estado_tarea_kanban" />
+            </Principal>
+            <Dependent Role="tb_tarea">
+              <PropertyRef Name="id_estado_tarea_kanban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_30">
+          <End Type="EFHModel.tb_fases_proyecto" Role="tb_fases_proyecto" Multiplicity="1" />
+          <End Type="EFHModel.tb_tarea" Role="tb_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_fases_proyecto">
+              <PropertyRef Name="id_fase_proyecto" />
+            </Principal>
+            <Dependent Role="tb_tarea">
+              <PropertyRef Name="id_fase_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_28">
+          <End Type="EFHModel.tb_proyecto" Role="tb_proyecto" Multiplicity="1" />
+          <End Type="EFHModel.tb_tarea" Role="tb_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_proyecto">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="tb_tarea">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1266,22 +1468,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_historia_usuario">
-            <EntityTypeMapping TypeName="EFHModel.tb_historia_usuario">
-              <MappingFragment StoreEntitySet="tb_historia_usuario">
-                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="id_riesgo" ColumnName="id_riesgo" />
-                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
-                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
-                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tb_plantilla_estados_proyectos_kanban">
             <EntityTypeMapping TypeName="EFHModel.tb_plantilla_estados_proyectos_kanban">
               <MappingFragment StoreEntitySet="tb_plantilla_estados_proyectos_kanban">
@@ -1314,6 +1500,55 @@
                 <ScalarProperty Name="desc_tipo_grupo" ColumnName="desc_tipo_grupo" />
                 <ScalarProperty Name="tipo_grupo" ColumnName="tipo_grupo" />
                 <ScalarProperty Name="id_tipo_grupo" ColumnName="id_tipo_grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_estado_tarea_kanban">
+            <EntityTypeMapping TypeName="EFHModel.tb_estado_tarea_kanban">
+              <MappingFragment StoreEntitySet="tb_estado_tarea_kanban">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="nombre_kanban" ColumnName="nombre_kanban" />
+                <ScalarProperty Name="id_estado_tarea_kanban" ColumnName="id_estado_tarea_kanban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_historia_usuario">
+            <EntityTypeMapping TypeName="EFHModel.tb_historia_usuario">
+              <MappingFragment StoreEntitySet="tb_historia_usuario">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_riesgo" ColumnName="id_riesgo" />
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tarea">
+            <EntityTypeMapping TypeName="EFHModel.tb_tarea">
+              <MappingFragment StoreEntitySet="tb_tarea">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="horas_estimadas" ColumnName="horas_estimadas" />
+                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_fase_proyecto" ColumnName="id_fase_proyecto" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_estado_tarea_kanban" ColumnName="id_estado_tarea_kanban" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+                <ScalarProperty Name="id_responsable_tarea" ColumnName="id_responsable_tarea" />
+                <ScalarProperty Name="fecha_inicio_tarea" ColumnName="fecha_inicio_tarea" />
+                <ScalarProperty Name="detalle_tarea" ColumnName="detalle_tarea" />
+                <ScalarProperty Name="nombre_tarea" ColumnName="nombre_tarea" />
+                <ScalarProperty Name="id_tarea" ColumnName="id_tarea" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

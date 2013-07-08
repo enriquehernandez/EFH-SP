@@ -4,6 +4,17 @@
 	width: 5000px;
 }
 
+#seccionKanbanBoard #lanesHistorias
+{
+	overflow: hidden;
+	width: 310px;
+}
+#seccionKanbanBoard #lanesTareas
+{
+	overflow: hidden;
+	width: 1000px;
+}
+
 #seccionKanbanBoard .column
 {
 	float: left;
@@ -57,7 +68,7 @@
 	display: block;
 	position: absolute;
 	top: 150px;
-	left: -30px;
+	left: -33px;
 	font-size: 18px;
 	font-weight: bold;
 	text-transform: uppercase;

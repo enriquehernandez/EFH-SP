@@ -8,6 +8,8 @@
         // ViewModel
         var proyectoViewModel = {
             estadosKanbanProyecto: ko.observableArray(),
+            estadosKanbanTarea: ko.observableArray(),
+            historias: ko.observableArray(),
             errorMessage: ko.observable("")
             //reset: reset
         };
@@ -57,6 +59,47 @@
         }
         //#endregion Estados Kanban Proyecto
 
+        //#region Historias
+        function getHistorias(idProyecto) {
+            var query = EntityQuery.from('GetHistoriasTO')
+                .withParameters({ idProyecto: idProyecto })
+
+            return manager.executeQuery(query)
+                .then(querySucceededGetHistorias)
+                .fail(queryFailed);
+        }
+
+        function querySucceededGetHistorias(data) {
+            var count = data.results.length;
+            if (!count) {
+                log("Sin Datos"); return;
+            }
+            proyectoViewModel.historias(data);
+        }
+        //#endregion Historias
+
+        //#region Estados Kanban Tarea
+        function getEstadosKanbanTareaFiltro(filtro) {
+            //if (filtro == null)
+            //    filtro = '';
+            var query = EntityQuery.from('GetKanbanTareaTO')
+                .withParameters(filtro)
+            //log("Obtener GetEstadosKanbanProyecto");
+            //console.log(filtro);
+            return manager.executeQuery(query)
+                .then(querySucceededGetEstadosKanbanTareaFiltro)
+                .fail(queryFailed);
+        }
+
+        function querySucceededGetEstadosKanbanTareaFiltro(data) {
+            var count = data.results.length;
+            if (!count) {
+                log("Sin Datos"); return;
+            }
+            proyectoViewModel.estadosKanbanTarea(data);
+        }
+        //#endregion Estados Kanban Tarea
+
         function queryFailed(error) {
             log(error);
             proyectoViewModel.errorMessage(error);
@@ -70,6 +113,8 @@
         var datacontextProyecto = {
             getEstadosKanbanProyecto: getEstadosKanbanProyecto,
             getEstadosKanbanProyectoFiltro: getEstadosKanbanProyectoFiltro,
+            getHistorias: getHistorias,
+            getEstadosKanbanTareaFiltro: getEstadosKanbanTareaFiltro,
             proyectoViewModel: proyectoViewModel
         };
         return datacontextProyecto;

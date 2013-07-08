@@ -1,0 +1,158 @@
+/* CSS Reset   
+----------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+		
+body
+{
+	font-family: Verdana, Helvetica, Sans-Serif;
+	font-size: 14px;
+	background-color: #f1f1f1;
+	color: #111;
+}
+
+h1,h2,h3,h4,h5,h6,p {	margin-bottom: 10px; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.2em; }
+h4 { font-size: 1.1em; }
+h5, h6 { font-size: 1em; }
+
+a,
+a:visited
+{
+	text-decoration: underline;
+	color: #006699;
+}
+a:hover
+{
+	color: #000;
+}
+
+#wrapper
+{
+	width: 900px;
+	margin: 0 auto;
+	background-color: #fff;
+	position: relative;
+}
+
+#header
+{
+	margin: 0px;
+	padding: 10px;
+	height: 68px;
+	overflow: hidden;
+	background: #000 url(../images/header.jpg) no-repeat scroll 0 0;
+	border-bottom: solid 1px #888;
+	color: #FFFFFF;
+	position: relative;
+	font-size: 13px;
+	font-family: "Georgia", "Lucida Grande", Verdana, Helvetica, Sans-Serif;
+	line-height: normal;
+}
+
+#cloud
+{
+	float: left;
+	position: absolute;
+	left: -66px;
+	top: 5px;
+	width: 66px;
+	height: 25px;
+	background: transparent url(../images/cloud.png) no-repeat scroll 0 0;
+	display: block;
+	z-index: 10;
+}
+
+#header #title
+{
+	float: left;
+	letter-spacing: -3px;
+	font-size: 34px;
+	font-weight: bold;
+	z-index: 1000;
+	position: relative;
+	background: transparent url(../images/transBlack50.png) repeat 0 0;
+	padding: 0 8px;
+}
+
+#header #title .odd-word
+{
+	color: #3DA1FF; /*#9FAFBF;*/
+	margin: 0 10px;
+}
+
+#header #subtitle
+{
+	position: absolute;
+	top: 52px;
+	left: 0px;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 0;
+	z-index: 1000;
+	padding: 0 0 10px 12px;
+}
+
+#demo-title
+{
+	overflow: auto;
+}
+
+.ad-wrap
+{
+	background: transparent url(../images/transBlack50.png) repeat 0 0;
+	color: #fff;
+	text-align: center;
+	font-size: 11px;
+	overflow: auto;
+	padding: 0 188px;
+}
+
+.ad-wrap div.lqm_ad {
+	float: left;
+	margin: 3px;
+}
+
+.ad-wrap a, .ad-wrap a:visited
+{
+	color: #fff;
+	text-decoration: underline;
+}
+
+.ad-wrap a:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+.ad-wrap p
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 144px;
+}
+
+#content-wrap
+{
+	padding: 60px 10px 10px 10px;
+}
+
+
+.info { padding: 20px 10px; }

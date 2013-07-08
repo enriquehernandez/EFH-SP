@@ -14,6 +14,11 @@ namespace EFH.Web.Models.BD
     
     public partial class tb_fases_proyecto
     {
+        public tb_fases_proyecto()
+        {
+            this.tb_tarea = new HashSet<tb_tarea>();
+        }
+    
         public long id_fase_proyecto { get; set; }
         public long id_empresa { get; set; }
         public string nombre_fase { get; set; }
@@ -21,5 +26,6 @@ namespace EFH.Web.Models.BD
         public Nullable<int> orden { get; set; }
     
         public virtual tb_empresa tb_empresa { get; set; }
+        public virtual ICollection<tb_tarea> tb_tarea { get; set; }
     }
 }

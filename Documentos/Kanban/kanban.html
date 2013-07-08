@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Kanban Board</title>
+		<meta name="author" content="EHL" />
+	
+		<link type="text/css" href="demo.css" rel="stylesheet" />
+		<link type="text/css" href="themes/base/ui.all.css" rel="stylesheet" />	
+		<!--<link type="text/css" href="themes/ui-darkness/ui.all.css" rel="stylesheet" />-->
+		<link type="text/css" href="tasks.css" rel="stylesheet" />
+		
+		<script type="text/javascript" src="jquery-1.4.1.js"></script>
+		<script type="text/javascript" src="jquery-ui-1.7.2.min.js"></script>
+		
+		<script type="text/javascript" src="jquery.color.js"></script>
+		<script type="text/javascript" src="demo.js"></script>
+		<script type="text/javascript" src="tasks.js"></script>
+	</head>
+	<body>
+	
+		<div>
+			<h2>Kanban Board Concept</h2>
+			<p>This page uses only HTML, CSS and JavaScript (jQuery &amp; jQuery UI).</p>
+		</div>
+		
+		<h3>Project ABC</h3>  
+		<div id="lanes"> 
+		 
+			<div id="stories-div" class="column last-column">
+				<button id="createStory" class="column-button ui-button ui-state-default ui-corner-all">Create new story</button>
+				<h3>Stories</h3>
+				<ul id="stories" class="stories">
+					<li>
+						<span class="story">
+							<span class='title-bar'>
+								<span class='story-points'>12</span>
+								<span class='status none tipme' title='Not committed.'></span>
+							</span>
+							<span class='summary'>Persona Fred wants to generate a report with the trending data.<button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<div class='tasks'>
+								<ul class='task-list'>
+									<li>Create DB schema for new reports tables.</li>
+									<li>Create reports data access layer.</li>
+									<li>Create reports business logic layer.</li>
+									<li>Create reports service layer.</li>
+									<li>Create reports presentation layer.</li>
+								</ul>
+								<button class='addTask ui-button ui-state-default ui-corner-all'>new task</button>
+							</div>
+							<span class='footer'>
+								<button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="story">
+							<span class='title-bar'>
+								<span class='story-points'>8</span>
+								<span class='status none tipme' title='Not committed.'></span>
+							</span>
+							<span class='summary'>Persona Susan wants to do archive to external USB drive all data older than 1 year.<button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<div class='tasks'>
+								<ul class='task-list'>
+									<li>Create archive business logic layer.</li>
+									<li>Create presentation layer.</li>
+								</ul>
+								<button class='addTask ui-button ui-state-default ui-corner-all'>new task</button>
+							</div>
+							<span class='footer'>
+								<button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="story">
+							<span class='title-bar'>
+								<span class='story-points'>5</span>
+								<span class='status none tipme' title='Not committed.'></span>
+							</span>
+							<span class='summary'>Persona Tom wants to drive golf balls 200 yards with in a typical fairway.<button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<div class='tasks'>
+								<ul class='task-list'>
+									<li>Determine what the fairway width.</li>
+									<li>Find the right club.</li>
+									<li>Find the right ball.</li>
+									<li>Buy golf shirt.</li>
+									<li>Get practice range time.</li>
+								</ul>
+								<button class='addTask ui-button ui-state-default ui-corner-all'>new task</button>
+							</div>
+							<span class='footer'>
+								<button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="story">
+							<span class='title-bar'>
+								<span class='story-points'>8</span>
+								<span class='status none tipme' title='Not committed.'></span>
+							</span>
+							<span class='summary'>Persona Bob wants upgrade his workstation to Windows 7 64 bit with 8GB RAM.<button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<div class='tasks'>
+								<ul class='task-list'>
+									<li>Get a new 64 bit workstation.</li>
+									<li>Order 8GB RAM.</li>
+									<li>Install RAM.</li>
+									<li>Install Windows 7 64 bit.</li>
+								</ul>
+								<button class='addTask ui-button ui-state-default ui-corner-all'>new task</button>
+							</div>
+							<span class='footer'>
+								<button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+				</ul> 
+			</div>
+			<div id="stories-toggle" class="column last-column">
+				<span>Stories</span>
+			</div>
+			
+			<div id="backlog-div" class="column"> 
+				<button id="createTask" class="column-button ui-button ui-state-default ui-corner-all">Create new task</button>
+				<h3>Backlog</h3>
+				<ul id="backlog" class="wipDrop tasks" style="cursor: hand;">
+					<li>
+						<span class="task">
+							<span class='title-bar'>2/4
+								<span class='status none tipme' title='This task has no status'></span>
+								<span class='user'>Sarah Johnson</span>
+							</span>
+							<span class='title'>Fix bug 68-F9.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Use information in the bug tracking db to reproduce the bug. Determine root cause and fix code. Code review to ensure impact of changes is well understood.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>4</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="task">
+							<span class='title-bar'>4/4
+								<span class='status alert tipme' title='Computer is down. Unable to start.'></span>
+								<span class='user'>Fred Black</span>
+							</span>
+							<span class='title'>Document feature X.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Work with John to understand feature as it is being developed. Write user docs to capture feature.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>4</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li class='ui-state-disabled tipme' title='This task requires Fix bug 68-F9 to be completed'>
+						<span class="task">
+							<span class='title-bar'>5/5
+								<span class='status none tipme' title='This features requires Fix bug 68-F9 to be completed.'></span>
+								<span class='user'>Jimmy Franks</span>
+							</span>
+							<span class='title'>Add enhancement ABC<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Create ui element a that allows user to do X,Y and Z.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>5</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li class='review'>
+						Next Formal Review
+						<button class='expandList ui-button ui-state-default ui-corner-all'>+</button>
+					</li>
+					<li>
+						<span class="task">
+							<span class='title-bar'>2/4
+								<span class='status none tipme' title='This task has no status'></span>
+								<span class='user'>Sarah Johnson</span>
+							</span>
+							<span class='title'>Fix bug 68-F9<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Use information in the bug tracking db to reproduce the bug. Determine root cause and fix code. Code review to ensure impact of changes is well understood.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>4</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="task">
+							<span class='title-bar'>4/4
+								<span class='status alert tipme' title='Computer is down. Unable to start.'></span>
+								<span class='user'>Fred Black</span>
+							</span>
+							<span class='title'>Document feature X.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Work with John to understand feature as it is being developed. Write user docs to capture feature.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>4</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="task">
+							<span class='title-bar'>2/4
+								<span class='status none tipme' title='This task has no status'></span>
+								<span class='user'>Sarah Johnson</span>
+							</span>
+							<span class='title'>Fix bug 68-F9<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Use information in the bug tracking db to reproduce the bug. Determine root cause and fix code. Code review to ensure impact of changes is well understood.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>4</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="task">
+							<span class='title-bar'>4/4
+								<span class='status alert tipme' title='Computer is down. Unable to start.'></span>
+								<span class='user'>Fred Black</span>
+							</span>
+							<span class='title'>Document feature X.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Work with John to understand feature as it is being developed. Write user docs to capture feature.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>4</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+				</ul> 
+			</div> 
+			 
+			<div id="wip-div" class="column"> 
+				<h3>WIP</h3>
+				<ul id="wip" class="tasks" style="cursor: hand; cursor: pointer;"> 
+					<li>
+						<span class="task">
+							<span class='title-bar'>2/8
+								<span class='status good tipme' title='This task has no status'></span>
+								<span class='user'>John Smith</span>
+							</span>
+							<span class='title'>Create feature X.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Implement the data access layer to enable the feature. Then add business logic for validation. Finally render the information in the presentaion layer.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>8</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<span class="task">
+							<span class='title-bar'>8/8
+								<span class='status warn tipme' title='I have been unable to contact product owner.'></span>
+								<span class='user'>Julie Frilio</span>
+							</span>
+							<span class='title'>Test feature Y.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Work with product owner to understand requirements. Write acceptance test. Execute against code base.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>8</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+				</ul> 
+			</div> 
+			 
+			<div id="done-div" class="column last-column"> 
+				<h3>Done</h3>
+				<ul id="done" class="wipDrop tasks" style="cursor: hand; cursor: pointer;"> 
+					<li>
+						<span class="task">
+							<span class='title-bar'>2/8
+								<span class='status good tipme' title='This task has no status'></span>
+								<span class='user'>John Smith</span>
+							</span>
+							<span class='title'>Create feature Y.<button class='expandTask column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+							<span class='details'>Implement the data access layer to enable the feature. Then add business logic for validation. Finally render the information in the presentaion layer.</span>
+							<span class='footer'>
+								<button class='editTask ui-button ui-state-default ui-corner-all'>?</button>
+								<span class='estimate'>Estimate:<span class='value'>8</span></span>
+								<span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+							</span>
+						</span>
+					</li>
+				</ul> 
+			</div> 
+		 
+			<br style="clear: both;"> 
+		 
+		</div> 
+
+		<div id="dlgNewStory" title="Create new story">
+			<p id="validateTipsStory">All form fields are required.</p>
+			<form>
+				<fieldset>
+					<label for="creator">Creator</label>
+					<input type="text" name="creator" id="creator" class="text ui-widget-content ui-corner-all" />
+					<label for="summary">Summary</label>
+					<textarea rows="3" cols="20" name="summary" id="summary" class="text ui-widget-content ui-corner-all"></textarea>
+				</fieldset>
+			</form>
+		</div>
+		
+		<div id="dlgAddTaskToStory" title="Add a task">
+			<p id="validateTipsAddTask">All form fields are required.</p>
+			<form>
+				<fieldset>
+					<label for="task-info">Detail</label>
+					<input type="text" name="task-info" id="task-info" class="text ui-widget-content ui-corner-all" />
+				</fieldset>
+			</form>
+		</div>
+
+		<div id="dlgNewTask" title="Create new task">
+			<p id="validateTipsTask">All form fields are required.</p>
+			<form>
+				<fieldset>
+					<label for="user">Assignee</label>
+					<input type="text" name="user" id="user" class="text ui-widget-content ui-corner-all" />
+					<label for="estimate">Estimate</label>
+					<input type="text" name="estimate" id="estimate" class="text ui-widget-content ui-corner-all" />
+					<label for="title">Title</label>
+					<input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all" />
+					<label for="details">Details</label>
+					<textarea rows="3" cols="20" name="details" id="details" class="text ui-widget-content ui-corner-all"></textarea>
+				</fieldset>
+			</form>
+		</div>
+		
+	</body>
+</html>
+
+

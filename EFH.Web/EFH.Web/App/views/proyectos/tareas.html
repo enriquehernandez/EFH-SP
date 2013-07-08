@@ -4,8 +4,66 @@
 
     </div>
     <br />
-    <!--<h3>Project ABC</h3>-->
     <div id="kanbanBoardPadre">
-        
+        <div id="lanesHistorias" data-bind="cargarHistorias: { title: title }">
+            <div id="stories-div" class="column last-column">
+                <!--<button id="createStory" class="column-button ui-button ui-state-default ui-corner-all">Create new story</button>-->
+                <h3><span>Historias</span></h3>
+                <ul id="stories" class="stories">
+                    <li>
+                        <span class="story">
+                            <span class='title-bar'>
+                                <span class='story-points'>12</span>
+                                <span class='status none tipme' title='Not committed.'></span>
+                            </span>
+                            <span class='summary'>Persona Fred wants to generate a report with the trending data.
+                                <button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+                            <div class='tasks'>
+                                <ul class='task-list'>
+                                    <li>Create DB schema for new reports tables.</li>
+                                    <li>Create reports data access layer.</li>
+                                    <li>Create reports business logic layer.</li>
+                                    <li>Create reports service layer.</li>
+                                    <li>Create reports presentation layer.</li>
+                                </ul>
+                                <button class='addTask ui-button ui-state-default ui-corner-all'>new task</button>
+                            </div>
+                            <span class='footer'>
+                                <button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
+                                <span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div id="stories-toggle" class="column last-column">
+                <span>Historias</span>
+            </div>
+        </div>
+        <div id="lanesTareas" data-bind="template: { foreach: estadosKanbanTarea, afterRender: estadosKanbanTareaCallback }">
+            <div class="column" data-bind="attr: { id: kanbanTarea.id_estado_tarea_kanban + '-div' }">
+                <h3><span data-bind="text: kanbanTarea.nombre_kanban"></span></h3>
+                <ul class="wipDrop tasks taskboard" style="cursor: pointer;" data-bind="attr: { id: kanbanTarea.id_estado_tarea_kanban }, template: { foreach: tareas }">
+                    <li data-bind="attr: { id: tarea.id_tarea, id_historia: tarea.id_historia }">
+                        <span class="task">
+                            <span class='title-bar'><span class="showTooltip" data-bind="text: nemoCliente, attr: { title: 'Cliente: ' + nombreCliente }">0</span>
+                                <span class='status good tipme showTooltip' title='El proyecto no tiene estado'></span>
+                                <span class='user' data-bind="text: nombreResponsable">Usuario</span>
+                            </span>
+                            <span class='title'><span data-bind="text: tarea.nombre_tarea">Nombre tarea.</span>
+                                <button class='expandTask column-button ui-button ui-state-default ui-corner-all'><i class="icon-chevron-right"></i></button>
+                            </span>
+                            <span class='details' data-bind="text: tarea.detalle_tarea">ttttt.</span>
+                            <span class='footer'>
+                                <!--<button class='editTask ui-button ui-state-default ui-corner-all'><i class="icon-edit"></i></button>-->
+                                <button tabindex="-1" class='btn btn-link btnEditarProyecto' data-bind="attr: { id_tarea: proyecto.id_tarea, id_estado_tarea_kanban: tarea.id_estado_tarea_kanban }"><i class="icon-edit"></i>Editar</button>
+                                <span class='estimate'>Estimado:<span class='value' data-bind="text: $.formatNumber(tarea.horas_estimadas, { format: '#,##0.#', locale: 'es' })">0</span></span>
+                                <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>

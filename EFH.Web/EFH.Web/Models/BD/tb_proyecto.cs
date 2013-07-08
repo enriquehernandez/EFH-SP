@@ -17,6 +17,7 @@ namespace EFH.Web.Models.BD
         public tb_proyecto()
         {
             this.tb_evento = new HashSet<tb_evento>();
+            this.tb_tarea = new HashSet<tb_tarea>();
         }
     
         public long id_proyecto { get; set; }
@@ -40,5 +41,6 @@ namespace EFH.Web.Models.BD
         public virtual tb_empresa tb_empresa { get; set; }
         public virtual tb_estado_proyecto_kanban tb_estado_proyecto_kanban { get; set; }
         public virtual ICollection<tb_evento> tb_evento { get; set; }
+        public virtual ICollection<tb_tarea> tb_tarea { get; set; }
     }
 }

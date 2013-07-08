@@ -17,12 +17,14 @@ namespace EFH.Web.Models.BD
         public long id_historia { get; set; }
         public long id_empresa { get; set; }
         public long id_proyecto { get; set; }
-        public int numero { get; set; }
+        public string codigo { get; set; }
         public int id_prioridad { get; set; }
         public int id_riesgo { get; set; }
         public string titulo { get; set; }
         public string descripcion { get; set; }
-        public Nullable<long> usuario { get; set; }
+        public Nullable<long> id_responsable { get; set; }
         public Nullable<System.DateTime> fecha_creacion { get; set; }
+        public Nullable<long> id_usuario_creador { get; set; }
+        public Nullable<int> orden { get; set; }
     }
 }

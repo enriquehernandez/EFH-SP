@@ -7,8 +7,8 @@
   "paths": {
     "text": "durandal/amd/text"
   },
-  "baseUrl": "I:\\Fuentes\\EFH 2.0\\EFH.Full\\EFH.Web\\EFH.Web\\App",
-  "mainConfigFile": "I:\\Fuentes\\EFH 2.0\\EFH.Full\\EFH.Web\\EFH.Web\\App\\main.js",
+  "baseUrl": "I:\\Github\\EFH-SP\\EFH.Web\\EFH.Web\\App",
+  "mainConfigFile": "I:\\Github\\EFH-SP\\EFH.Web\\EFH.Web\\App\\main.js",
   "include": [
     "config",
     "configGrid",
@@ -69,7 +69,7 @@
   "exclude": [],
   "keepBuildDir": true,
   "optimize": "uglify2",
-  "out": "I:\\Fuentes\\EFH 2.0\\EFH.Full\\EFH.Web\\EFH.Web\\App\\main-built.js",
+  "out": "I:\\Github\\EFH-SP\\EFH.Web\\EFH.Web\\App\\main-built.js",
   "pragmas": {
     "build": true
   },

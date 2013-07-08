@@ -239,6 +239,9 @@
     <Compile Include="Models\BD\tb_estado_proyecto_kanban.cs">
       <DependentUpon>EFH.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BD\tb_estado_tarea_kanban.cs">
+      <DependentUpon>EFH.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BD\tb_evento.cs">
       <DependentUpon>EFH.tt</DependentUpon>
     </Compile>
@@ -270,6 +273,9 @@
       <DependentUpon>EFH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\tb_roles.cs">
+      <DependentUpon>EFH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BD\tb_tarea.cs">
       <DependentUpon>EFH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\tb_tipo_grupo.cs">
