@@ -22,9 +22,10 @@
                 <ul class="wipDrop tasks taskboard" style="cursor: pointer;" data-bind="attr: { id: kanbanProyecto.id_estado_proyecto_kanban }, template: { foreach: proyectos }">
                     <li data-bind="attr: { id: proyecto.id_proyecto }">
                         <span class="task">
-                            <span class='title-bar'><span class="showTooltip" data-bind="text: nemoCliente, attr: { title: 'Cliente: ' + nombreCliente }">0</span>
+                            <span class='title-bar'>
+                                <span class="showTooltip" data-bind="text: nemoCliente, attr: { title: 'Cliente: ' + nombreCliente }">0</span>
                                 <span class='status good tipme showTooltip' title='El proyecto no tiene estado'></span>
-                                <span class='user' data-bind="text: nombreResponsable">Usuario</span>
+                                <span class='user'><span class='value showTooltip' data-bind="    text: nombreResponsable, attr: { title: 'Responsable: ' + nombreResponsable }">Usuario</span></span>
                             </span>
                             <span class='title'><span data-bind="text: proyecto.nombre_proyecto">Nombre proyecto.</span>
                                 <button class='expandTask column-button ui-button ui-state-default ui-corner-all'><i class="icon-chevron-right"></i></button>
@@ -39,7 +40,7 @@
                                         <button tabindex="-1" class='btn btn-link btnVerTareas' data-bind="attr: { id_proyecto: proyecto.id_proyecto }"><i class="icon-tasks"> </i>Ver Tareas</button>
                                     </p>
                                 </div>
-                                <span class='estimate'>Estimado:<span class='value' data-bind="text: $.formatNumber(proyecto.horas_estimadas, { format: '#,##0.#', locale: 'es' })">0</span></span>
+                                <span class='estimate'>Estimado:<span class='value showTooltip' data-bind="text: $.formatNumber(proyecto.horas_estimadas, { format: '#,##0.#', locale: 'es' }), attr: { title: 'Estimado: ' + $.formatNumber(proyecto.horas_estimadas, { format: '#,##0.#', locale: 'es' }) + ' Horas' }">0</span></span>
                                 <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>
                             </span>
                         </span>

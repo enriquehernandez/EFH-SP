@@ -257,7 +257,8 @@
 }
 
 
-#seccionKanbanBoard .task span.user
+#seccionKanbanBoard .task span.user,
+#seccionKanbanBoard .story span.user
 {
 	float: right;
 	text-align: right;

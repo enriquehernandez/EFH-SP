@@ -9,28 +9,34 @@
             <div id="stories-div" class="column last-column">
                 <!--<button id="createStory" class="column-button ui-button ui-state-default ui-corner-all">Create new story</button>-->
                 <h3><span>Historias</span></h3>
-                <ul id="stories" class="stories">
-                    <li>
+                <ul id="stories" class="stories" style="cursor: pointer;" data-bind="template: { foreach: historias }">
+                    <li data-bind="attr: { id: historia.id_historia }">
                         <span class="story">
                             <span class='title-bar'>
-                                <span class='story-points'>12</span>
-                                <span class='status none tipme' title='Not committed.'></span>
+                                <span class='story-points'><span class="showTooltip" data-bind="text: historia.codigo">0</span></span>
+                                <span class='status none tipme' title='La historia no tiene estado'></span>
+                                <span class='user'><span class='value showTooltip' data-bind="    text: nombreResponsable, attr: { title: 'Responsable: ' + nombreResponsable }">Usuario</span></span>
                             </span>
-                            <span class='summary'>Persona Fred wants to generate a report with the trending data.
-                                <button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>
+                            <span class='summary'><span data-bind="text: historia.titulo">Nombre historia.</span>
+                                <!--<button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'>+</button></span>-->
+                                <button class='toggleTasks column-button ui-button ui-state-default ui-corner-all'><i class="icon-chevron-right"></i></button>
+                            </span>
                             <div class='tasks'>
-                                <ul class='task-list'>
-                                    <li>Create DB schema for new reports tables.</li>
-                                    <li>Create reports data access layer.</li>
-                                    <li>Create reports business logic layer.</li>
-                                    <li>Create reports service layer.</li>
-                                    <li>Create reports presentation layer.</li>
-                                </ul>
-                                <button class='addTask ui-button ui-state-default ui-corner-all'>new task</button>
+                                <span class='details' data-bind="text: historia.descripcion">hhhh.</span>
                             </div>
                             <span class='footer'>
-                                <button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
-                                <span class='creator'>Creator:<span class='value'>Susan Blue</span></span>
+                                <!--<button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
+                                <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>-->
+                                <div class="dropdown-submenu  ui-button">
+                                    <button class="btn btn-link" tabindex="-1"><i class="icon-edit"></i></button>
+                                    <p class="dropdown-menu">
+                                        <button tabindex="-1" class='btn btn-link btnEditarHistoria' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-edit"></i>Editar Historia</button>
+                                        <button tabindex="-1" class='btn btn-link btnCrearTarea' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-tasks"></i>Crear Tarea</button>
+                                        <button tabindex="-1" class='btn btn-link btnCommit' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-tasks"></i>Commit</button>
+                                    </p>
+                                </div>
+                                <span class='estimate'>Estimado:<span class='value showTooltip' data-bind="text: $.formatNumber(historia.horas_estimadas, { format: '#,##0.#', locale: 'es' }), attr: { title: 'Estimado: ' + $.formatNumber(historia.horas_estimadas, { format: '#,##0.#', locale: 'es' }) + ' Horas' }">0</span></span>
+                                <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>
                             </span>
                         </span>
                     </li>

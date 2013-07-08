@@ -136,7 +136,7 @@ define(['services/logger', 'services/datacontextProyectos', 'services/datacontex
         var filterParam = context.filter;
         //alert(filterParam);
         vmTareas.idProyecto(filterParam);
-
+        vmTareas.filtro.idProyecto = filterParam;
         //vmTareas.filtro.idProyecto = filterParam;
         //title('tareas');
         //return datacontextProyectos.getEstadosKanbanTareaFiltro(vmTareas.filtro)

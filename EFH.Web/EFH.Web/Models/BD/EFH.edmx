@@ -248,6 +248,7 @@
           <Property Name="fecha_creacion" Type="datetime" />
           <Property Name="id_usuario_creador" Type="bigint" />
           <Property Name="orden" Type="int" />
+          <Property Name="horas_estimadas" Type="float" />
         </EntityType>
         <EntityType Name="tb_plantilla_estados_proyectos_kanban">
           <Key>
@@ -710,7 +711,6 @@
             <End Role="tb_empresa" EntitySet="tb_empresa" />
             <End Role="tb_estado_tarea_kanban" EntitySet="tb_estado_tarea_kanban" />
           </AssociationSet>
-          <EntitySet Name="tb_historia_usuario" EntityType="EFHModel.tb_historia_usuario" />
           <EntitySet Name="tb_tarea" EntityType="EFHModel.tb_tarea" />
           <AssociationSet Name="R_26" Association="EFHModel.R_26">
             <End Role="tb_estado_tarea_kanban" EntitySet="tb_estado_tarea_kanban" />
@@ -724,6 +724,7 @@
             <End Role="tb_proyecto" EntitySet="tb_proyecto" />
             <End Role="tb_tarea" EntitySet="tb_tarea" />
           </AssociationSet>
+          <EntitySet Name="tb_historia_usuario" EntityType="EFHModel.tb_historia_usuario" />
           </EntityContainer>
         <EntityType Name="tb_empresa">
           <Key>
@@ -1187,23 +1188,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tb_historia_usuario">
-          <Key>
-            <PropertyRef Name="id_historia" />
-          </Key>
-          <Property Type="Int64" Name="id_historia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="id_empresa" Nullable="false" />
-          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="id_prioridad" Nullable="false" />
-          <Property Type="Int32" Name="id_riesgo" Nullable="false" />
-          <Property Type="String" Name="titulo" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="id_responsable" />
-          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
-          <Property Type="Int64" Name="id_usuario_creador" />
-          <Property Type="Int32" Name="orden" />
-        </EntityType>
         <EntityType Name="tb_tarea">
           <Key>
             <PropertyRef Name="id_tarea" />
@@ -1263,6 +1247,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tb_historia_usuario">
+          <Key>
+            <PropertyRef Name="id_historia" />
+          </Key>
+          <Property Type="Int64" Name="id_historia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_empresa" Nullable="false" />
+          <Property Type="Int64" Name="id_proyecto" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_prioridad" Nullable="false" />
+          <Property Type="Int32" Name="id_riesgo" Nullable="false" />
+          <Property Type="String" Name="titulo" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_responsable" />
+          <Property Type="DateTime" Name="fecha_creacion" Precision="3" />
+          <Property Type="Int64" Name="id_usuario_creador" />
+          <Property Type="Int32" Name="orden" />
+          <Property Type="Double" Name="horas_estimadas" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1513,24 +1515,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_historia_usuario">
-            <EntityTypeMapping TypeName="EFHModel.tb_historia_usuario">
-              <MappingFragment StoreEntitySet="tb_historia_usuario">
-                <ScalarProperty Name="orden" ColumnName="orden" />
-                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
-                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
-                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="id_riesgo" ColumnName="id_riesgo" />
-                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
-                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
-                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tb_tarea">
             <EntityTypeMapping TypeName="EFHModel.tb_tarea">
               <MappingFragment StoreEntitySet="tb_tarea">
@@ -1549,6 +1533,25 @@
                 <ScalarProperty Name="detalle_tarea" ColumnName="detalle_tarea" />
                 <ScalarProperty Name="nombre_tarea" ColumnName="nombre_tarea" />
                 <ScalarProperty Name="id_tarea" ColumnName="id_tarea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_historia_usuario">
+            <EntityTypeMapping TypeName="EFHModel.tb_historia_usuario">
+              <MappingFragment StoreEntitySet="tb_historia_usuario">
+                <ScalarProperty Name="horas_estimadas" ColumnName="horas_estimadas" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_riesgo" ColumnName="id_riesgo" />
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_historia" ColumnName="id_historia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

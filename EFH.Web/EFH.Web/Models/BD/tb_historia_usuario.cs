@@ -26,5 +26,6 @@ namespace EFH.Web.Models.BD
         public Nullable<System.DateTime> fecha_creacion { get; set; }
         public Nullable<long> id_usuario_creador { get; set; }
         public Nullable<int> orden { get; set; }
+        public Nullable<double> horas_estimadas { get; set; }
     }
 }

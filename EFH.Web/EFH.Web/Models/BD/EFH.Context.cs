@@ -50,8 +50,8 @@ namespace EFH.Web.Models.BD
         public DbSet<tb_riesgo> tb_riesgo { get; set; }
         public DbSet<tb_tipo_grupo> tb_tipo_grupo { get; set; }
         public DbSet<tb_estado_tarea_kanban> tb_estado_tarea_kanban { get; set; }
-        public DbSet<tb_historia_usuario> tb_historia_usuario { get; set; }
         public DbSet<tb_tarea> tb_tarea { get; set; }
+        public DbSet<tb_historia_usuario> tb_historia_usuario { get; set; }
     
         public virtual int efh_sp_iniciar_empresa(Nullable<long> idEmpresa)
         {
