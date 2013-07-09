@@ -18,7 +18,7 @@
         <!--<div id="lanes" data-bind="kanbanProyectos: { estadosKanbanProyecto: estadosKanbanProyecto }, foreach: estadosKanbanProyecto">-->
         <div id="lanes" data-bind="template: { foreach: estadosKanbanProyecto, afterRender: estadosKanbanProyectoCallback }">
             <div class="column" data-bind="attr: { id: kanbanProyecto.id_estado_proyecto_kanban + '-div' }">
-                <h3><span data-bind="text: kanbanProyecto.nombre_kanban"></span></h3>
+                <h3 class="titKanban"><span data-bind="text: kanbanProyecto.nombre_kanban"></span></h3>
                 <ul class="wipDrop tasks taskboard" style="cursor: pointer;" data-bind="attr: { id: kanbanProyecto.id_estado_proyecto_kanban }, template: { foreach: proyectos }">
                     <li data-bind="attr: { id: proyecto.id_proyecto }">
                         <span class="task">
@@ -34,7 +34,7 @@
                             <span class='footer'>
                                 <!--<button class='editTask ui-button ui-state-default ui-corner-all'><i class="icon-edit"></i></button>-->
                                 <div class="dropdown-submenu  ui-button">
-                                    <button class="btn btn-link" tabindex="-1"><i class="icon-edit"></i></button>
+                                    <button class="btn btn-link" tabindex="-1"><i class="icon-reorder"></i></button>
                                     <p class="dropdown-menu">
                                         <button tabindex="-1" class='btn btn-link btnEditarProyecto' data-bind="attr: { id_proyecto: proyecto.id_proyecto, id_estado_proyecto_kanban: proyecto.id_estado_proyecto_kanban }"><i class="icon-edit"> </i>Editar</button>
                                         <button tabindex="-1" class='btn btn-link btnVerTareas' data-bind="attr: { id_proyecto: proyecto.id_proyecto }"><i class="icon-tasks"> </i>Ver Tareas</button>
@@ -116,8 +116,8 @@
             </fieldset>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button class="btn btn-primary" data-bind='click: objFormulario.submit'>Save changes</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+            <button class="btn btn-primary" data-bind='click: objFormularioHist.submit'>Guardar</button>
         </div>
     </div>
 </section>

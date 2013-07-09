@@ -211,11 +211,21 @@ namespace EFH.Web.Controllers
                         {
                             long id_responsable_tarea = Convert.ToInt64(t.id_responsable_tarea);
                             long id_usuario_creador = Convert.ToInt64(t.id_usuario_creador);
+                            
                             CustomModel.TareaTO tarea = new CustomModel.TareaTO();
                             tarea.tarea = t;
                             //var tabla = _contextProvider.Context.tb_usuario.Where(u => u.id_usuario.Equals(id_responsable_proyecto));
                             tarea.nombreResponsable = FormatoNombreUsuario(_contextProvider.Context.tb_usuario.Where(u => u.id_usuario.Equals(id_responsable_tarea)).Single());
                             tarea.nombreCreador = FormatoNombreUsuario(_contextProvider.Context.tb_usuario.Where(u => u.id_usuario.Equals(id_usuario_creador)).Single());
+                            try
+                            {
+                                long id_historia = Convert.ToInt64(t.id_historia);
+                                tarea.codigo = _contextProvider.Context.tb_historia_usuario.Where(h => h.id_historia.Equals(id_historia)).Single().codigo + "-" + t.id_tarea.ToString();
+                            }
+                            catch
+                            {
+                                tarea.codigo = t.id_tarea.ToString();
+                            }
                             kanban.tareas.Add(tarea);
                         }
                     }
@@ -228,6 +238,30 @@ namespace EFH.Web.Controllers
             {
                 throw ex;
             }
+        }
+
+        [HttpPut]
+        [ActionName("UpdateEstadoTareaKanban")]
+        public HttpResponseMessage UpdateEstadoTareaKanban(long id, tb_tarea tb_tarea2)
+        {
+            tb_tarea tb_tarea = db.tb_tarea.Find(id);
+            if (tb_tarea == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            tb_tarea.id_estado_tarea_kanban = tb_tarea2.id_estado_tarea_kanban;
+            db.Entry(tb_tarea).State = System.Data.EntityState.Modified;
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, tb_tarea);
         }
         #endregion
 
@@ -258,6 +292,35 @@ namespace EFH.Web.Controllers
             {
                 throw ex;
             }
+        }
+
+        [HttpPut]
+        [ActionName("UpdateHistoria")]
+        public HttpResponseMessage UpdateHistoria(long id, tb_historia_usuario tb_historia_usuario2)
+        {
+            tb_historia_usuario tb_historia_usuario = db.tb_historia_usuario.Find(id);
+            if (tb_historia_usuario == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            tb_historia_usuario.codigo = tb_historia_usuario2.codigo;
+            tb_historia_usuario.titulo = tb_historia_usuario2.titulo;
+            tb_historia_usuario.descripcion = tb_historia_usuario2.descripcion;
+            tb_historia_usuario.id_responsable = tb_historia_usuario2.id_responsable;
+            tb_historia_usuario.horas_estimadas = tb_historia_usuario2.horas_estimadas;
+
+            db.Entry(tb_historia_usuario).State = System.Data.EntityState.Modified;
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, tb_historia_usuario);
         }
         #endregion
 
@@ -307,6 +370,7 @@ namespace EFH.Web.Controllers.CustomModel
         public tb_tarea tarea { get; set; }
         public string nombreResponsable { get; set; }
         public string nombreCreador { get; set; }
+        public string codigo { get; set; }
     }
     #endregion
 

@@ -1,84 +1,113 @@
 #seccionKanbanBoard #lanes
 {
-	overflow: hidden;
-	width: 5000px;
+    overflow: hidden;
+    width: 5000px;
+    height: 100%;
 }
 
 #seccionKanbanBoard #lanesHistorias
 {
-	overflow: hidden;
-	width: 310px;
+    overflow: hidden;
+    /*width: 310px;*/
+    height: 100%;
 }
+
 #seccionKanbanBoard #lanesTareas
 {
-	overflow: hidden;
-	width: 1000px;
+    overflow: hidden;
+    /*width: 1000px;*/
+    vertical-align: top;
+    height: 100%;
 }
 
-#seccionKanbanBoard .column
+#seccionKanbanBoard .titKanban
 {
-	float: left;
-	padding: 10px;
-	min-height: 500px;
-	border-right: dashed 2px #ddd;
-	background-color: #f8f8f8;
-	color: #000;
+    border-bottom: 2px dashed #DDDDDD;
+    margin: 0;
+    text-align:center;
 }
 
-#seccionKanbanBoard .column-button
+#kanbanBoardPadre
 {
-	float: right;
+    background-color: #F8F8F8;
+    min-height: 800px;
 }
 
-#seccionKanbanBoard #backlog-div
+#seccionKanbanBoard, #seccionKanbanBoard #lanesHistorias, #seccionKanbanBoard #lanesTareas
 {
+    display: inline-block;
 }
 
-#seccionKanbanBoard #wip-div
-{
-}
+    #seccionKanbanBoard .column
+    {
+        float: left;
+        padding: 5px;
+        min-height: 500px;
+        border-right: dashed 2px #ddd;
+        background-color: #f8f8f8;
+        color: #000;
+        height: 100%;
+    }
 
-#seccionKanbanBoard #done-div
-{
-}
+        #seccionKanbanBoard #stories-toggle
+        {
+            padding: 10px;
+        }
 
-#seccionKanbanBoard .last-column
-{
-	border-right: none;
-}
+    #seccionKanbanBoard .column-button
+    {
+        float: right;
+    }
 
-#seccionKanbanBoard #stories-toggle
-{
-	width: 10px;
-	height: 100px;
-	display: block;
-	background-color: #888;
-	color: #fff;
-	position: relative;
-}
+    #seccionKanbanBoard #backlog-div
+    {
+    }
 
-#seccionKanbanBoard #stories-toggle:hover
-{
-	color: #000;
-	cursor: pointer;
-}
+    #seccionKanbanBoard #wip-div
+    {
+    }
 
-#seccionKanbanBoard #stories-toggle span
-{
-	display: block;
-	position: absolute;
-	top: 150px;
-	left: -33px;
-	font-size: 18px;
-	font-weight: bold;
-	text-transform: uppercase;
-	-webkit-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
+    #seccionKanbanBoard #done-div
+    {
+    }
+
+    #seccionKanbanBoard .last-column
+    {
+        border-right: none;
+    }
+
+    #seccionKanbanBoard #stories-toggle
+    {
+        width: 10px;
+        height: 100%;
+        display: block;
+        background-color: #888;
+        color: #fff;
+        position: relative;
+    }
+
+        #seccionKanbanBoard #stories-toggle:hover
+        {
+            color: #000;
+            cursor: pointer;
+        }
+
+        #seccionKanbanBoard #stories-toggle span
+        {
+            display: block;
+            position: absolute;
+            top: 150px;
+            left: -33px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        }
 
 
-/*.tooltip
+    /*.tooltip
 {
 	background-color: #ffffdd;
 	color: #000;
@@ -86,202 +115,253 @@
 	padding: 5px;
 }*/
 
-#seccionKanbanBoard ul.tasks,
-#seccionKanbanBoard ul.stories
+    #seccionKanbanBoard ul.tasks,
+    #seccionKanbanBoard ul.stories
+    {
+        list-style: none;
+        margin: 0;
+        min-height: 200px;
+        min-width: 120px;
+        display: block;
+    }
+
+        #seccionKanbanBoard ul.tasks li,
+        #seccionKanbanBoard ul.stories li
+        {
+            min-height: 80px;
+        }
+
+            #seccionKanbanBoard ul.tasks li.drop-area
+            {
+                background-color: #aaa;
+                border: solid 2px #ccc;
+                border-radius: 3px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+            }
+
+            #seccionKanbanBoard ul.tasks li.review
+            {
+                min-height: 5px;
+                background-color: #000;
+                color: #fff;
+                text-align: right;
+                padding: 3px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+
+            #seccionKanbanBoard ul.tasks li.destacado .task,
+#seccionKanbanBoard ul.stories li.destacado .task
 {
-	list-style: none;
-	margin: 0;
-	min-height: 200px;
-	min-width: 120px;
-	display: block;
+    /*-webkit-box-shadow: 7px 7px 18px rgba(50, 50, 50, 1);
+    -moz-box-shadow:    7px 7px 18px rgba(50, 50, 50, 1);
+    box-shadow:         7px 7px 18px rgba(50, 50, 50, 1);*/
+    /*border: solid 1px #999999;*/
+    box-shadow: 5px 5px 5px #999999;
 }
 
-#seccionKanbanBoard ul.tasks li,
-#seccionKanbanBoard ul.stories li
+    #seccionKanbanBoard ul.task-list
+    {
+        margin: 0px;
+        padding: 0 20px;
+        display: block;
+        background-color: #ffffdd;
+    }
+
+        #seccionKanbanBoard ul.task-list li
+        {
+            min-height: 0px;
+        }
+
+    #seccionKanbanBoard span.title-bar
+    {
+        display: block;
+        padding: 0 3px;
+        background-color: #ddd;
+        border-bottom: solid 1px #ccc;
+        height: 25px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    #seccionKanbanBoard span.status
+    {
+        float: right;
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        border: solid 1px #fff;
+        margin: 5px 0 0 5px;
+    }
+
+        #seccionKanbanBoard span.status.none
+        {
+            background-color: #f2f2f2;
+        }
+
+        #seccionKanbanBoard span.status.ok,
+        #seccionKanbanBoard span.status.good,
+        #seccionKanbanBoard span.status.committed
+        {
+            background-color: #00ff00;
+        }
+
+        #seccionKanbanBoard span.status.warn
+        {
+            background-color: #ffff00;
+        }
+
+        #seccionKanbanBoard span.status.alerta
+        {
+            background-color: #ff0000;
+        }
+
+    #seccionKanbanBoard span.footer
+    {
+        display: block;
+        background: #ddd;
+        border-top: solid 1px #ccc;
+        font-size: 12px;
+        padding: 3px;
+        min-height: 20px;
+    }
+
+        #seccionKanbanBoard span.footer span.value
+        {
+            font-weight: bold;
+            padding-left: 2px;
+            padding-right: 3px;
+        }
+
+        #seccionKanbanBoard span.footer span.creator
+        {
+            float: right;
+        }
+
+        #seccionKanbanBoard span.footer button
+        {
+            padding: 0;
+        }
+
+        #seccionKanbanBoard span.footer .dropdown-menu button
+        {
+            display: block;
+        }
+
+    #seccionKanbanBoard .story
+    {
+        margin: 3px;
+        background-color: #f2f2f2;
+        width: 250px;
+        display: block;
+        border: solid 2px #ccc;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+    }
+
+        #seccionKanbanBoard .story span.summary
+        {
+            display: block;
+            border-top: dotted 1px #ccc;
+            padding: 3px;
+        }
+
+        #seccionKanbanBoard .story div.tasks
+        {
+            overflow: auto;
+        }
+
+        #seccionKanbanBoard .story span.summary button.toggleTasks
+        {
+            float: right;
+        }
+
+        #seccionKanbanBoard .story button.addTask
+        {
+            float: right;
+            margin: 3px;
+        }
+
+    #seccionKanbanBoard .task
+    {
+        margin: 3px;
+        background-color: #f2f2f2;
+        width: 255px;
+        display: block;
+        border: solid 2px #ccc;
+        /*border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;*/
+
+        border-radius: 3px 3px 3px 3px;
+    }
+
+#lanesTareas .task
 {
-    min-height: 80px;
+    width: 190px;
 }
 
-#seccionKanbanBoard ul.tasks li.drop-area
-{
-    background-color: #aaa;
-    border: solid 2px #ccc;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-}
+    #lanesTareas .task .creator
+    {
+        width: 100px;
+    }
 
-#seccionKanbanBoard ul.tasks li.review
-{
-	min-height: 5px;
-	background-color: #000;
-	color: #fff;
-	text-align: right;
-	padding: 3px;
-	font-size: 12px;
-	font-weight: bold;
-}
+        #lanesTareas .task .creator span
+        {
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+        }
 
-#seccionKanbanBoard ul.task-list
-{
-	margin: 0px;
-	padding: 0 20px;
-	display: block;
-	background-color: #ffffdd
-}
+    #lanesTareas .task .title-bar .userValue
+    {
+        width: 120px;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+    }
 
-#seccionKanbanBoard ul.task-list li
+.ellipsis
 {
-	min-height: 0px;
-}
-
-#seccionKanbanBoard span.title-bar
-{
-	display: block;
-    padding: 0 3px;
-	background-color: #ddd;
-	border-bottom: solid 1px #ccc;
-	height: 25px;
-    font-weight: bold;
-	color: #333;
-}
-
-#seccionKanbanBoard span.status
-{
-	float: right;
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    border: solid 1px #fff;
-	margin: 5px 0 0 5px;
-}
-
-#seccionKanbanBoard span.status.none
-{
-	background-color: #f2f2f2;
-}
-
-#seccionKanbanBoard span.status.ok,
-#seccionKanbanBoard span.status.good,
-#seccionKanbanBoard span.status.committed
-{
-	background-color: #00ff00;
-}
-
-#seccionKanbanBoard span.status.warn
-{
-	background-color: #ffff00;
-}
-
-#seccionKanbanBoard span.status.alerta
-{
-	background-color: #ff0000;
-}
-
-#seccionKanbanBoard span.footer
-{
-    display: block;
-    background: #ddd;
-    border-top: solid 1px #ccc;
-	font-size: 12px;
-	padding: 3px;
-	min-height: 20px;
-}
-
-#seccionKanbanBoard span.footer span.value
-{
-	font-weight: bold;
-	padding-left: 2px;
-	padding-right: 3px;
-}
-
-#seccionKanbanBoard span.footer span.creator
-{
-	float: right;
-}
-
-#seccionKanbanBoard span.footer button
-{
-	padding: 0;
-}
-#seccionKanbanBoard span.footer .dropdown-menu button
-{
-	display: block;
-}
-
-#seccionKanbanBoard .story
-{
-    margin: 3px;
-    background-color: #f2f2f2;
-    width: 250px;
-    display: block;
-    border: solid 2px #ccc;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;   
-}
-
-#seccionKanbanBoard .story span.summary
-{
-	display: block;
-    border-top: dotted 1px #ccc;
-    padding: 3px;
-}
-
-#seccionKanbanBoard .story div.tasks
-{
-	overflow: auto;
-}
-
-#seccionKanbanBoard .story span.summary button.toggleTasks
-{
-    float: right;
-}
-
-#seccionKanbanBoard .story button.addTask
-{
-	float: right;
-	margin: 3px;
-}
-
-#seccionKanbanBoard .task
-{
-    margin: 3px;
-    background-color: #f2f2f2;
-    width: 255px;
-    display: block;
-    border: solid 2px #ccc;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;   
+    text-overflow: ellipsis !important;
 }
 
 
 #seccionKanbanBoard .task span.user,
 #seccionKanbanBoard .story span.user
 {
-	float: right;
-	text-align: right;
-	font-weight: bold;
+    float: right;
+    text-align: right;
+    font-weight: bold;
 }
 
 #seccionKanbanBoard .task span.title
 {
-	display: block;
+    display: block;
     padding: 3px;
     overflow: auto;
 }
 
-#seccionKanbanBoard .task span.title button.expandTask
-{
-    float: right;
-}
+    #seccionKanbanBoard .task span.title button.expandTask
+    {
+        float: right;
+    }
 
 #seccionKanbanBoard .task span.details
 {
-	display: block;
+    display: block;
     border-top: dotted 1px #ccc;
     padding: 3px;
     background-color: #ffffdd;
 }
 
+span.subCant
+{
+    color: #CC2200;
+    font-size: 13px;
+    padding-left: 4px;
+    vertical-align: super;
+}

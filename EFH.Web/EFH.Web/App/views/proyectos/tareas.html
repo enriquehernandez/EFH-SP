@@ -1,19 +1,27 @@
 ﻿<section id="seccionKanbanBoard">
     <div>
         <h2>Kanban de Tareas</h2>
-
+        <div class="form-search">
+            <div class="input-append">
+                <input id="search-query" type="text" class="input-xlarge search-query" placeholder="Filtrar por Nombre de Tarea" 
+                    data-bind="value: varSearch, event: { keypress: searchEnter }">
+                <button id="btnSearch" class="btn" type="button" data-bind='click: search'>Buscar</button>
+            </div>
+            <button class="btn btn-link AddHistoria" type="button" data-bind="click: AddHistoria">Agregar Historia</button>
+            <button class="btn btn-link AddTarea" type="button" data-bind="click: AddTarea">Agregar Tarea</button>
+        </div>
     </div>
     <br />
     <div id="kanbanBoardPadre">
-        <div id="lanesHistorias" data-bind="cargarHistorias: { title: title }">
-            <div id="stories-div" class="column last-column">
+        <div id="lanesHistorias" data-bind="cargarLanesHistorias: { title: title }">
+            <div id="stories-div" class="column last-column" data-bind="cargarHistorias: { title: title }">
                 <!--<button id="createStory" class="column-button ui-button ui-state-default ui-corner-all">Create new story</button>-->
-                <h3><span>Historias</span></h3>
-                <ul id="stories" class="stories" style="cursor: pointer;" data-bind="template: { foreach: historias }">
+                <h3 class="titKanban"><span>Historias</span><span class="subCant" data-bind="text: '(' + historias().length + ')'">(0)</span></h3>
+                <ul id="stories" class="stories" style="cursor: pointer;" data-bind="template: { foreach: historias, afterRender: HistoriaRenderCallback }">
                     <li data-bind="attr: { id: historia.id_historia }">
                         <span class="story">
                             <span class='title-bar'>
-                                <span class='story-points'><span class="showTooltip" data-bind="text: historia.codigo">0</span></span>
+                                <span class='story-points'><span class="showTooltip codigoHistoria" data-bind="text: historia.codigo, attr: { title: 'Código Historia: ' + historia.codigo, id_historia: historia.id_historia }">0</span></span>
                                 <span class='status none tipme' title='La historia no tiene estado'></span>
                                 <span class='user'><span class='value showTooltip' data-bind="    text: nombreResponsable, attr: { title: 'Responsable: ' + nombreResponsable }">Usuario</span></span>
                             </span>
@@ -28,11 +36,11 @@
                                 <!--<button class='commitStory ui-button ui-state-default ui-corner-all'>commit</button>
                                 <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>-->
                                 <div class="dropdown-submenu  ui-button">
-                                    <button class="btn btn-link" tabindex="-1"><i class="icon-edit"></i></button>
+                                    <button class="btn btn-link" tabindex="-1"><i class="icon-reorder"></i></button>
                                     <p class="dropdown-menu">
-                                        <button tabindex="-1" class='btn btn-link btnEditarHistoria' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-edit"></i>Editar Historia</button>
-                                        <button tabindex="-1" class='btn btn-link btnCrearTarea' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-tasks"></i>Crear Tarea</button>
-                                        <button tabindex="-1" class='btn btn-link btnCommit' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-tasks"></i>Commit</button>
+                                        <button tabindex="-1" class='btn btn-link btnEditarHistoria' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-edit"></i> Editar Historia</button>
+                                        <button tabindex="-1" class='btn btn-link btnCrearTarea' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-tasks"></i> Crear Tarea</button>
+                                        <button tabindex="-1" class='btn btn-link btnCommit' data-bind="attr: { id_historia: historia.id_historia }"><i class="icon-check-sign"></i> Commit</button>
                                     </p>
                                 </div>
                                 <span class='estimate'>Estimado:<span class='value showTooltip' data-bind="text: $.formatNumber(historia.horas_estimadas, { format: '#,##0.#', locale: 'es' }), attr: { title: 'Estimado: ' + $.formatNumber(historia.horas_estimadas, { format: '#,##0.#', locale: 'es' }) + ' Horas' }">0</span></span>
@@ -48,13 +56,13 @@
         </div>
         <div id="lanesTareas" data-bind="template: { foreach: estadosKanbanTarea, afterRender: estadosKanbanTareaCallback }">
             <div class="column" data-bind="attr: { id: kanbanTarea.id_estado_tarea_kanban + '-div' }">
-                <h3><span data-bind="text: kanbanTarea.nombre_kanban"></span></h3>
+                <h3 class="titKanban"><span data-bind="text: kanbanTarea.nombre_kanban"></span><span class="subCant" data-bind="    text: '(' + tareas.length + ')'">(0)</span></h3>
                 <ul class="wipDrop tasks taskboard" style="cursor: pointer;" data-bind="attr: { id: kanbanTarea.id_estado_tarea_kanban }, template: { foreach: tareas }">
                     <li data-bind="attr: { id: tarea.id_tarea, id_historia: tarea.id_historia }">
                         <span class="task">
-                            <span class='title-bar'><span class="showTooltip" data-bind="text: nemoCliente, attr: { title: 'Cliente: ' + nombreCliente }">0</span>
+                            <span class='title-bar' data-bind="attr: { id: tarea.id_tarea }"><span class="showTooltip" data-bind="    text: codigo, attr: { title: 'Código: ' + codigo }">0</span>
                                 <span class='status good tipme showTooltip' title='El proyecto no tiene estado'></span>
-                                <span class='user' data-bind="text: nombreResponsable">Usuario</span>
+                                <span class='user'><span class='value showTooltip userValue ellipsis' data-bind="text: nombreResponsable, attr: { title: 'Responsable: ' + nombreResponsable }">Usuario</span></span>
                             </span>
                             <span class='title'><span data-bind="text: tarea.nombre_tarea">Nombre tarea.</span>
                                 <button class='expandTask column-button ui-button ui-state-default ui-corner-all'><i class="icon-chevron-right"></i></button>
@@ -62,14 +70,65 @@
                             <span class='details' data-bind="text: tarea.detalle_tarea">ttttt.</span>
                             <span class='footer'>
                                 <!--<button class='editTask ui-button ui-state-default ui-corner-all'><i class="icon-edit"></i></button>-->
-                                <button tabindex="-1" class='btn btn-link btnEditarProyecto' data-bind="attr: { id_tarea: proyecto.id_tarea, id_estado_tarea_kanban: tarea.id_estado_tarea_kanban }"><i class="icon-edit"></i>Editar</button>
-                                <span class='estimate'>Estimado:<span class='value' data-bind="text: $.formatNumber(tarea.horas_estimadas, { format: '#,##0.#', locale: 'es' })">0</span></span>
-                                <span class='creator'><span class='value showTooltip' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>
+                                <button tabindex="-1" class='btn btn-link btnEditarProyecto' data-bind="attr: { id_tarea: tarea.id_tarea, id_estado_tarea_kanban: tarea.id_estado_tarea_kanban }"><i class="icon-edit"></i></button>
+                                <span class='estimate'><span class='value showTooltip' data-bind="text: $.formatNumber(tarea.horas_estimadas, { format: '#,##0.#', locale: 'es' }), attr: { title: 'Estimado: ' + $.formatNumber(tarea.horas_estimadas, { format: '#,##0.#', locale: 'es' }) + ' Horas' }">0</span>H</span>
+                                <span class='creator'><span class='value showTooltip creatorValue ellipsis' data-bind="text: nombreCreador, attr: { title: 'Creado por: ' + nombreCreador }">Usuario</span></span>
                             </span>
                         </span>
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+
+    <div id="myModalHistoria" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Historia</h3>
+        </div>
+        <div class="modal-body form-horizontal">
+            <fieldset>
+                <!--<div><span data-bind='text: objFormularioHist.errors().length'></span>errors</div>-->
+                <div data-bind="attr: { class: getClaseError(objFormularioHist.validarCampos(), objFormularioHist.codigoHistoria.isValid()) }">
+                    <label for="Codigo" class="control-label">C&oacute;digo</label>
+                    <div class="controls">
+                        <input data-bind='value: objFormularioHist.codigoHistoria' type="text" name="Codigo" id="Codigo" placeholder="Código de la Historia Ej: H1">
+                        <span class="help-inline" data-bind="validationMessage: objFormularioHist.codigoHistoria"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormularioHist.validarCampos(), objFormularioHist.tituloHistoria.isValid()) }">
+                    <label for="Titulo" class="control-label">Titulo</label>
+                    <div class="controls">
+                        <input data-bind='value: objFormularioHist.tituloHistoria' type="text" name="Titulo" id="Titulo" placeholder="Titulo de la Historia">
+                        <span class="help-inline" data-bind="validationMessage: objFormularioHist.tituloHistoria"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormularioHist.validarCampos(), objFormularioHist.descHistoria.isValid()) }">
+                    <label for="descHistoria" class="control-label">Descripción</label>
+                    <div class="controls">
+                        <textarea data-bind='value: objFormularioHist.descHistoria' rows="3" name="descHistoria" id="descHistoria" placeholder="Descripción de la Historia, problema del Cliente, Similar a un Caso de Uso en palabras"></textarea>
+                        <span class="help-inline" data-bind="validationMessage: objFormularioHist.descHistoria"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormularioHist.validarCampos(), objFormularioHist.valueResponsablesHistoria.isValid()) }">
+                    <label for="Responsable" class="control-label">Responsable</label>
+                    <div class="controls">
+                        <select data-bind="options: varSelectResponsablesHistoria, optionsText: 'valor', optionsValue: 'llave', value: objFormularioHist.valueResponsablesHistoria, optionsCaption: 'Escoger opción'"></select>
+                        <span class="help-inline" data-bind="validationMessage: objFormularioHist.valueResponsablesHistoria"></span>
+                    </div>
+                </div>
+                <div data-bind="attr: { class: getClaseError(objFormularioHist.validarCampos(), objFormularioHist.horasEstimadas.isValid()) }">
+                    <label for="horasEstimadas" class="control-label">Horas Estimadas</label>
+                    <div class="controls">
+                        <input data-bind='value: objFormularioHist.horasEstimadas' type="number" name="horasEstimadas" id="horasEstimadas" placeholder="Horas Estimadas">
+                        <span class="help-inline" data-bind="validationMessage: objFormularioHist.horasEstimadas"></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+            <button class="btn btn-primary" data-bind='click: objFormularioHist.submit'>Guardar</button>
         </div>
     </div>
 </section>

@@ -30,9 +30,9 @@
 
         function querySucceededGetEstadosKanbanProyecto(data) {
             var count = data.results.length;
-            if (!count) {
-                log("Sin Datos"); return;
-            }
+            //if (!count) {
+            //    log("Sin Datos"); return;
+            //}
             proyectoViewModel.estadosKanbanProyecto(data);
         }
         //#endregion Estados Kanban Proyecto
@@ -52,15 +52,16 @@
 
         function querySucceededGetEstadosKanbanProyectoFiltro(data) {
             var count = data.results.length;
-            if (!count) {
-                log("Sin Datos"); return;
-            }
+            //if (!count) {
+            //    log("Sin Datos"); return;
+            //}
             proyectoViewModel.estadosKanbanProyecto(data);
         }
         //#endregion Estados Kanban Proyecto
 
         //#region Historias
         function getHistorias(idProyecto) {
+            //proyectoViewModel.historias.removeAll();
             var query = EntityQuery.from('GetHistoriasTO')
                 .withParameters({ idProyecto: idProyecto })
 
@@ -71,9 +72,9 @@
 
         function querySucceededGetHistorias(data) {
             var count = data.results.length;
-            if (!count) {
-                log("Sin Datos"); return;
-            }
+            //if (!count) {
+            //    log("Sin Datos"); return;
+            //}
             proyectoViewModel.historias(data);
         }
         //#endregion Historias
@@ -93,9 +94,9 @@
 
         function querySucceededGetEstadosKanbanTareaFiltro(data) {
             var count = data.results.length;
-            if (!count) {
-                log("Sin Datos"); return;
-            }
+            //if (!count) {
+            //    log("Sin Datos"); return;
+            //}
             proyectoViewModel.estadosKanbanTarea(data);
         }
         //#endregion Estados Kanban Tarea
